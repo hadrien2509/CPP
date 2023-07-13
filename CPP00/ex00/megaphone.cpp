@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 15:41:10 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/07/10 17:04:38 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/07/13 14:36:59 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 #include <cstring>
 using namespace std;
 
-void	megaphone(char *str)
+void	megaphone(std::string str)
 {
-	for (size_t i = 0; i < strlen(str); ++i)
+	for (size_t i = 0; i < str.length(); ++i)
 		str[i] = toupper(str[i]);
 	std::cout << str;
 }

@@ -6,13 +6,14 @@
 #    By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/10 17:07:58 by hgeissle          #+#    #+#              #
-#    Updated: 2023/07/10 17:08:26 by hgeissle         ###   ########.fr        #
+#    Updated: 2023/07/13 17:13:42 by hgeissle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = phonebook
 
 SRCS = PhoneBook.cpp\
+		Contact.cpp\
 
 OBJS		= $(SRCS:.cpp=.o)
 RM			= rm -f
