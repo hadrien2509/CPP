@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Contact.hpp                                        :+:      :+:    :+:   */
+/*   replaceContent.cpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/10 17:11:32 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/07/14 17:00:13 by hgeissle         ###   ########.fr       */
+/*   Created: 2023/07/24 17:34:34 by hgeissle          #+#    #+#             */
+/*   Updated: 2023/07/24 18:52:31 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONTACT_H
-# define CONTACT_H
+#include "replaceContent.hpp"
 
-#include <string>
-# include <iomanip>
-# include <cstdlib>
-# include <iostream>
+void	replaceContent::repContent(std::string &content, const std::string s1, const std::string s2)
+{
+	long	i = 0;
 
-class Contact {
-
-public:
-
-	void create_contact(void);
-
-	std::string first_name;
-	std::string last_name;
-	std::string nickname;
-	std::string phone_number;
-	std::string darkest_secret;
-};
-
-#endif
+	while (1)
+	{
+		i = content.find(s1, i);
+		if (i == -1)
+			break ;
+		content.erase(i, s1.length());
+		content.insert(i + s1.length(), s2);
+	}
+}

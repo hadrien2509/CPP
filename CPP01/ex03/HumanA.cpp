@@ -1,34 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Contact.hpp                                        :+:      :+:    :+:   */
+/*   HumanA.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/10 17:11:32 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/07/14 17:00:13 by hgeissle         ###   ########.fr       */
+/*   Created: 2023/07/21 17:56:23 by hgeissle          #+#    #+#             */
+/*   Updated: 2023/07/24 15:40:06 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONTACT_H
-# define CONTACT_H
+#include "HumanA.hpp"
 
-#include <string>
-# include <iomanip>
-# include <cstdlib>
-# include <iostream>
+HumanA::HumanA( std::string a1, Weapon &a2 ) : name(a1), wp(&a2)
+{
+	return ;
+}
 
-class Contact {
-
-public:
-
-	void create_contact(void);
-
-	std::string first_name;
-	std::string last_name;
-	std::string nickname;
-	std::string phone_number;
-	std::string darkest_secret;
-};
-
-#endif
+void HumanA::attack(void)
+{
+	std::cout << this->name << " attacks with " << this->wp->getType() << " !" << std::endl;
+}

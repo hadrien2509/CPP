@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 17:06:56 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/07/13 18:39:22 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/07/14 16:59:43 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,8 @@ void	PhoneBook::search_contact(void)
 	{
 		std::cout << std::endl;
 		std::cout << "Index of the contact you're looking for : ";
-		std::getline(std::cin, str);
+		if (!std::getline(std::cin, str))
+			exit (-1);
 		index = atoi(str.c_str());
 		if (!PhoneBook::_string_is_num(str) || str.empty() || index < 0 || index > PhoneBook::nbr_of_contacts - 1)
 			std::cout << "/!\\ Invalid index" << std::endl;
@@ -118,7 +119,8 @@ int	main(void)
 	while (1)
 	{
 		std::cout << "Entry : ";
-		std::getline(std::cin, str);
+		if (!std::getline(std::cin, str))
+			return -1;
 		if (str == "ADD")
 		{
 			std::cout << std::endl;

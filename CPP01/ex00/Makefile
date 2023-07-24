@@ -5,14 +5,17 @@
 #                                                     +:+ +:+         +:+      #
 #    By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/07/10 15:48:49 by hgeissle          #+#    #+#              #
-#    Updated: 2023/07/21 16:32:26 by hgeissle         ###   ########.fr        #
+#    Created: 2023/07/14 18:00:17 by hgeissle          #+#    #+#              #
+#    Updated: 2023/07/21 16:31:00 by hgeissle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = megaphone
+NAME = zombie
 
-SRCS = megaphone.cpp\
+SRCS = newZombie.cpp\
+		main.cpp\
+		randomChump.cpp\
+		Zombie.cpp\
 
 OBJS		= $(SRCS:.cpp=.o)
 RM			= rm -f
@@ -35,4 +38,4 @@ clean:
     
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re .cpp.o

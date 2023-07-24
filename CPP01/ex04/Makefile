@@ -5,14 +5,15 @@
 #                                                     +:+ +:+         +:+      #
 #    By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/07/10 15:48:49 by hgeissle          #+#    #+#              #
-#    Updated: 2023/07/21 16:32:26 by hgeissle         ###   ########.fr        #
+#    Created: 2023/07/21 17:53:56 by hgeissle          #+#    #+#              #
+#    Updated: 2023/07/24 18:50:19 by hgeissle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = megaphone
+NAME = sed
 
-SRCS = megaphone.cpp\
+SRCS = 	main.cpp\
+		replaceContent.cpp
 
 OBJS		= $(SRCS:.cpp=.o)
 RM			= rm -f

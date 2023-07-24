@@ -1,34 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Contact.hpp                                        :+:      :+:    :+:   */
+/*   replaceContent.hpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/10 17:11:32 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/07/14 17:00:13 by hgeissle         ###   ########.fr       */
+/*   Created: 2023/07/24 16:59:43 by hgeissle          #+#    #+#             */
+/*   Updated: 2023/07/24 18:48:59 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONTACT_H
-# define CONTACT_H
-
+#include <fstream>
 #include <string>
-# include <iomanip>
-# include <cstdlib>
-# include <iostream>
 
-class Contact {
+class replaceContent {
 
-public:
+	public :
+		
+		void	repContent(std::string &content, const std::string s1, const std::string s2);
 
-	void create_contact(void);
 
-	std::string first_name;
-	std::string last_name;
-	std::string nickname;
-	std::string phone_number;
-	std::string darkest_secret;
 };
-
-#endif

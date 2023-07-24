@@ -5,14 +5,14 @@
 #                                                     +:+ +:+         +:+      #
 #    By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/07/10 15:48:49 by hgeissle          #+#    #+#              #
-#    Updated: 2023/07/21 16:32:26 by hgeissle         ###   ########.fr        #
+#    Created: 2023/07/21 16:32:08 by hgeissle          #+#    #+#              #
+#    Updated: 2023/07/21 17:55:03 by hgeissle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = megaphone
+NAME = brain
 
-SRCS = megaphone.cpp\
+SRCS = main.cpp\
 
 OBJS		= $(SRCS:.cpp=.o)
 RM			= rm -f

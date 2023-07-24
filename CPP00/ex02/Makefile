@@ -5,14 +5,15 @@
 #                                                     +:+ +:+         +:+      #
 #    By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/07/10 15:48:49 by hgeissle          #+#    #+#              #
-#    Updated: 2023/07/21 16:32:26 by hgeissle         ###   ########.fr        #
+#    Created: 2023/07/10 17:07:58 by hgeissle          #+#    #+#              #
+#    Updated: 2023/07/14 17:11:32 by hgeissle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = megaphone
+NAME = logs
 
-SRCS = megaphone.cpp\
+SRCS = Account.cpp\
+		tests.cpp\
 
 OBJS		= $(SRCS:.cpp=.o)
 RM			= rm -f
@@ -35,4 +36,4 @@ clean:
     
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re .cpp.o

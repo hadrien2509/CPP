@@ -1,34 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Contact.hpp                                        :+:      :+:    :+:   */
+/*   HumanB.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/10 17:11:32 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/07/14 17:00:13 by hgeissle         ###   ########.fr       */
+/*   Created: 2023/07/21 17:56:26 by hgeissle          #+#    #+#             */
+/*   Updated: 2023/07/24 15:39:35 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONTACT_H
-# define CONTACT_H
+#include "HumanB.hpp"
 
-#include <string>
-# include <iomanip>
-# include <cstdlib>
-# include <iostream>
+HumanB::HumanB( std::string a1) : name(a1)
+{
+	this->wp = 0;
+	return ;
+}
 
-class Contact {
+void HumanB::setWeapon(Weapon &arg)
+{
+	this->wp= &arg;
+}
 
-public:
-
-	void create_contact(void);
-
-	std::string first_name;
-	std::string last_name;
-	std::string nickname;
-	std::string phone_number;
-	std::string darkest_secret;
-};
-
-#endif
+void HumanB::attack(void)
+{
+	if (!this->wp)
+		std::cout << this->name << " attacks with his fists !" << std::endl;
+	else
+		std::cout << this->name << " attacks with " << this->wp->getType() << " !" << std::endl;
+}
