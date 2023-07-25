@@ -5,35 +5,20 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/24 15:41:29 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/07/25 16:44:34 by hgeissle         ###   ########.fr       */
+/*   Created: 2023/07/25 16:51:30 by hgeissle          #+#    #+#             */
+/*   Updated: 2023/07/25 17:47:36 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "replaceContent.hpp"
+#include "Harl.hpp"
 
-int	main(int ac, char **av)
+int main(void)
 {
-	std::ifstream		inputFile;
-	std::ofstream		outputFile;
-	std::string			content;
-	std::string			line;
-	replaceContent		instance;
-	const std::string	s1 = av[2];
-	const std::string	s2 = av[3];
+    Harl	instance;
 
-	if (ac != 4)
-		return -1;
-	inputFile.open(av[1]);
-	std::string	filename = av[1];
-	filename.append(".replace");
-	outputFile.open(filename);
-	while (std::getline(inputFile, line))
-	{
-		content.append(line);
-		if (!inputFile.eof())
-			content.append("\n");
-	}
-	instance.repContent(content, s1, s2);
-	outputFile << content;
+    instance.complain("ERROR"); // Output: Function 2
+    instance.complain("INFO"); // Output: Function 4
+    instance.complain("DEBUG"); // Output: Invalid level: level5
+
+    return 0;
 }
