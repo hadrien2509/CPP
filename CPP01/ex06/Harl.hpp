@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/25 16:51:30 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/07/27 17:30:04 by hgeissle         ###   ########.fr       */
+/*   Created: 2023/07/25 16:51:42 by hgeissle          #+#    #+#             */
+/*   Updated: 2023/07/27 18:05:27 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Harl.hpp"
+#include <iostream>
+#include <map>
+#include <string>
 
-int main(void)
-{
-    Harl	instance;
+class Harl {
+	
+	void debug( void );
+	void info( void );
+	void warning( void );
+	void error( void );
 
-    instance.complain("DEBUG"); 
-    instance.complain("INFO");
-    instance.complain("WARNING"); 
-    instance.complain("ERROR");
-    instance.complain("YES");
-
-    return 0;
-}
+	public :
+	
+		void	switch_it_off( std::string level );
+};

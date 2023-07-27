@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 16:51:48 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/07/25 18:11:48 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/07/27 17:31:48 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,15 @@ void	Harl::error(void)
 }
 void	Harl::complain(std::string level)
 {
-	std::map<std::string, void (Harl::*)()> levelToFunct;
-	levelToFunct["DEBUG"] = &Harl::debug;
-	levelToFunct["INFO"] = &Harl::info;
-	levelToFunct["WARNING"] = &Harl::warning;
-	levelToFunct["ERROR"] = &Harl::error;
-	
-	levelToFunct.find(level);
+	std::string	levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+	void		(Harl::*fct_ptr[4])(void) = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
+
+	for (int i = 0; i < 4; i++)
+	{
+		if (levels[i] == level)
+		{
+			(this->*fct_ptr[i])();
+			break ;
+		}
+	}
 }
