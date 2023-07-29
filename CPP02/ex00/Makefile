@@ -10,12 +10,10 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = 
+NAME = fixed
 
-SRCS = newZombie.cpp\
+SRCS = Fixed.cpp\
 		main.cpp\
-		randomChump.cpp\
-		Zombie.cpp\
 
 OBJS		= $(SRCS:.cpp=.o)
 RM			= rm -f
@@ -34,7 +32,7 @@ fclean: clean
 	$(RM) $(NAME)
     
 clean:
-	$(RM) -f $(OBJS) $(OBJS_B)
+	$(RM) $(OBJS) $(OBJS_B)
     
 re: fclean all
 

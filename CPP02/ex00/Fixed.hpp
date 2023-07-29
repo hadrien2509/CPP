@@ -20,9 +20,9 @@ class Fixed {
 	public:
 
 		Fixed( void );
+		~Fixed( void );
 		Fixed( Fixed& );
-		int getRawBits( void ) const;
-		void setRawBits( int const raw );
-		Fixed& Fixed::operator=( const Fixed& );
-		Fixed& Fixed::operator=( Fixed& );
-}
+		int 	getRawBits( void ) const;
+		void 	setRawBits( int const raw );
+		void 	operator=( Fixed& );
+};
