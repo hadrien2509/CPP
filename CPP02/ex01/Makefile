@@ -6,16 +6,14 @@
 #    By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/14 18:00:17 by hgeissle          #+#    #+#              #
-#    Updated: 2023/07/21 16:31:00 by hgeissle         ###   ########.fr        #
+#    Updated: 2023/07/31 17:31:56 by hgeissle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = zombie
+NAME = fixed
 
-SRCS = newZombie.cpp\
-		main.cpp\
-		randomChump.cpp\
-		Zombie.cpp\
+SRCS = main.cpp\
+		Fixed.cpp\
 
 OBJS		= $(SRCS:.cpp=.o)
 RM			= rm -f
