@@ -26,13 +26,8 @@ Fixed::Fixed(int val)
 }
 Fixed::Fixed(float val)
 {
-	float	frac_part;
-	
 	std::cout << "Float constructor called" << std::endl;
-	this->val = val;
-	frac_part = val - floor(val);
-	this->frac = (frac_part * 1000) 
-	this->val += frac_part;
+	
 }
 
 Fixed::Fixed(const Fixed &old)
@@ -76,5 +71,5 @@ float	Fixed::toFloat( void ) const
 
 int Fixed::toInt( void ) const
 {
-	return ((int)this->val);
+	return (this->val >> this->frac);
 }
