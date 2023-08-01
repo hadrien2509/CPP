@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 17:46:56 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/08/01 13:54:10 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/08/01 18:25:50 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,90 @@ void	Fixed::operator=( const Fixed& old)
 {
 	std::cout << "Copy assignment operator called" << std::endl;
 	this->val = old.val;
+}
+
+bool	Fixed::operator>( const Fixed& other )
+{
+	return (this->val > other.val);
+}
+
+bool	Fixed::operator<( const Fixed& other )
+{
+	return (this->val < other.val);
+}
+
+bool	Fixed::operator<=( const Fixed& other )
+{
+	return (this->val <= other.val);
+}
+
+bool	Fixed::operator>=( const Fixed& other )
+{
+	return (this->val >= other.val);
+}
+
+bool	Fixed::operator==( const Fixed& other )
+{
+	return (this->val == other.val);
+}
+
+bool	Fixed::operator!=( const Fixed& other )
+{
+	return (this->val != other.val);
+}
+
+int	Fixed::operator+( const Fixed& other )
+{
+	return (this->val + other.val);
+}
+
+int	Fixed::operator-( const Fixed& other )
+{
+	return (this->val - other.val);
+}
+
+int	Fixed::operator*( const Fixed& other )
+{
+	return (this->val * other.val);
+}
+
+int	Fixed::operator/( const Fixed& other )
+{
+	return (this->val / other.val);
+}
+
+void	Fixed::operator--( void )
+{
+	this->val--;
+}
+
+void	Fixed::operator--( int )
+{
+	this->val--;
+}
+void	Fixed::operator++( void )
+{
+	this->val++;
+}
+void	Fixed::operator++( int )
+{
+	this->val++;
+}
+
+Fixed&	Fixed::max( Fixed& a, Fixed& b)
+{
+	if (a.val >= b.val)
+		return (a);
+	else
+		return (b);
+}
+
+Fixed&	Fixed::min( Fixed& a, Fixed& b)
+{
+	if (a.val <= b.val)
+		return (a);
+	else
+		return (b);
 }
 
 std::ostream &operator<<(std::ostream &out, Fixed const &value)
