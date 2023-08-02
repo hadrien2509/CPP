@@ -1,32 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   bsp.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/01 16:49:50 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/08/02 10:57:37 by hgeissle         ###   ########.fr       */
+/*   Created: 2023/08/02 13:19:02 by hgeissle          #+#    #+#             */
+/*   Updated: 2023/08/02 13:45:39 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
-
-std::ostream &operator<<(std::ostream &out, Fixed const &value);
-
-int	main(void)
+bool bsp( Point const a, Point const b, Point const c, Point const point)
 {
-	Fixed a;
-	Fixed const b(Fixed(5.05f) * Fixed(2));
-
-	std::cout << a << std::endl;
-	std::cout << ++a << std::endl;
-	std::cout << a << std::endl;
-	std::cout << a++ << std::endl;
-	std::cout << a << std::endl;
-
-	std::cout << b << std::endl;
-
-	std::cout << Fixed::max(a, b) << std::endl;
-	return (0);
+	
 }

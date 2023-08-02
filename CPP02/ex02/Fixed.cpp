@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 17:46:56 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/08/01 20:57:03 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/08/02 12:33:41 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,24 +67,36 @@ bool	Fixed::operator!=( const Fixed& other )
 	return (this->val != other.val);
 }
 
-int	Fixed::operator+( const Fixed& other )
+Fixed	Fixed::operator+( const Fixed& other )
 {
-	return (this->val + other.val);
+	Fixed	val(*this);
+
+	val.setRawBits(this->val + other.val);
+	return (val);
 }
 
-int	Fixed::operator-( const Fixed& other )
+Fixed	Fixed::operator-( const Fixed& other )
 {
-	return (this->val - other.val);
+	Fixed	val(*this);
+
+	val.setRawBits(this->val - other.val);
+	return (val);
 }
 
-int	Fixed::operator*( const Fixed& other )
+Fixed	Fixed::operator*( const Fixed& other )
 {
-	return ((long)this->val * (long)other.val / (1 << Fixed::frac));
+	Fixed val(*this);
+	
+	val.setRawBits((long)this->val * (long)other.val / (1 << this->frac));
+	return (val);
 }
 
-int	Fixed::operator/( const Fixed& other )
+Fixed	Fixed::operator/( const Fixed& other )
 {
-	return (this->val / other.val);
+	Fixed val(*this);
+	
+	val.setRawBits((long)this->val * (long)other.val / (1 << this->frac));
+	return (val);
 }
 
 Fixed	Fixed::operator--( void )
@@ -147,12 +159,12 @@ const Fixed&	Fixed::min( const Fixed& a, const Fixed& b)
 
 std::ostream &operator<<(std::ostream &out, Fixed const &value)
 {
-    out << value.toFloat();
-    return (out);
+    return (out << value.toFloat());
 }
 
 Fixed::~Fixed(void)
 {
+	
 }
 
 int Fixed::getRawBits(void) const

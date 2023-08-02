@@ -6,7 +6,7 @@
 #    By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/14 18:00:17 by hgeissle          #+#    #+#              #
-#    Updated: 2023/07/31 17:31:56 by hgeissle         ###   ########.fr        #
+#    Updated: 2023/08/02 12:43:09 by hgeissle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ SRCS = main.cpp\
 OBJS		= $(SRCS:.cpp=.o)
 RM			= rm -f
 COMPILER	= c++
-FLAGS		= -Wall -Wextra -Werror -std=c++98
+FLAGS		= -Wall -Wextra -Werror -std=c++98 -fsanitize=address
 
 .cpp.o:
 	${COMPILER} ${FLAGS} -c $< -o ${<:.cpp=.o}

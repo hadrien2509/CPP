@@ -1,32 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Point.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/01 16:49:50 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/08/02 10:57:37 by hgeissle         ###   ########.fr       */
+/*   Created: 2023/08/02 13:19:08 by hgeissle          #+#    #+#             */
+/*   Updated: 2023/08/02 16:40:24 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
+#include "Point.hpp"
 
-std::ostream &operator<<(std::ostream &out, Fixed const &value);
-
-int	main(void)
+Point::Point( void )
 {
-	Fixed a;
-	Fixed const b(Fixed(5.05f) * Fixed(2));
-
-	std::cout << a << std::endl;
-	std::cout << ++a << std::endl;
-	std::cout << a << std::endl;
-	std::cout << a++ << std::endl;
-	std::cout << a << std::endl;
-
-	std::cout << b << std::endl;
-
-	std::cout << Fixed::max(a, b) << std::endl;
-	return (0);
+	const Fixed	x(0);
+	const Fixed	y(0);
+	
+	this->x = x;
+	this->y.setRawBits(0);
 }
