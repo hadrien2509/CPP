@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 16:49:50 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/08/01 18:26:31 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/08/03 19:53:27 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
+#include "Point.hpp"
+
+bool bsp( Point const a, Point const b, Point const c, Point const point);
+std::ostream &operator<<(std::ostream &out, Fixed const &value);
 
 int	main(void)
 {
-	Fixed a;
-	Fixed const b(Fixed(5.05f) * Fixed(2));
-
-	std::cout << a << std::endl;
-	std::cout << ++a << std::endl;
-	std::cout << a << std::endl;
-	std::cout << a++ << std::endl;
-	std::cout << a << std::endl;
-
-	std::cout << b << std::endl;
-
-	std::cout << Fixed::max(a, b) << std::endl;
+	Point	a(1, 1);
+	Point	b(3, 4);
+	Point	c(6, 1);
+	
+	Point	p(5, 3);
+	std::cout << bsp(a, b, c, p) << std::endl;
+	
+	Point	q(3, 2);
+	std::cout << bsp(a, b, c, q) << std::endl;
 	return (0);
 }
