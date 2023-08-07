@@ -32,7 +32,8 @@ ScavTrap::~ScavTrap( void )
 {
 	std::cout << "ScavTrap destructor called" << std::endl;
 }
-ScavTrap::ScavTrap( const ScavTrap& other )
+
+ScavTrap::ScavTrap( const ScavTrap& other ) : ClapTrap()
 {
 	std::cout << "ScavTrap copy constructor called" << std::endl;
 	this->name = other.name;

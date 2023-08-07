@@ -15,10 +15,12 @@
 DiamondTrap::DiamondTrap( void ) : name("DiamondTrap")
 {
 	std::cout << "DiamondTrap default constructor called" << std::endl;
+	ClapTrap::name = "DiamondTrap_clap_name";
 }
 DiamondTrap::DiamondTrap( const std::string str) : name(str)
 {
 	std::cout << "DiamondTrap constructor called" << std::endl;
+	ClapTrap::name = str + "_clap_name";
 }
 DiamondTrap::~DiamondTrap( void )
 {
