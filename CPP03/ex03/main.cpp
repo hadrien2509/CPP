@@ -10,30 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Point.hpp"
-
-bool bsp( Point const a, Point const b, Point const c, Point const point);
-std::ostream &operator<<(std::ostream &out, Fixed const &value);
+#include "ClapTrap.hpp"
 
 int	main(void)
 {
-	Point const	a(1, 1);
-	Point const	b(3, 4);
-	Point const	c(6, 1);
-	
-	Point	p(5, 3);
-	std::cout << bsp(a, b, c, p) << std::endl;
-	
-	Point	q(3, 2);
-	std::cout << bsp(a, b, c, q) << std::endl;
+	ClapTrap frag("Jack");
 
-	Point	r(4, 3);
-	std::cout << bsp(a, b, c, r) << std::endl;
-
-	Point	s(2, 2);
-	std::cout << bsp(a, b, c, s) << std::endl;
-
-	Point	t(1, 1);
-	std::cout << bsp(a, b, c, t) << std::endl;
+	frag.takeDamage(4);
+	frag.attack("mel-faqu");
+	frag.beRepaired(3);
+	frag.takeDamage(5);
+	frag.takeDamage(2);
+	frag.beRepaired(12);
+	frag.beRepaired(10);
+	frag.beRepaired(1);
+	frag.takeDamage(10);
 	return (0);
 }

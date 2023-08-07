@@ -1,29 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/01 16:49:50 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/08/04 14:59:29 by hgeissle         ###   ########.fr       */
+/*   Created: 2023/08/04 22:11:10 by hgeissle          #+#    #+#             */
+/*   Updated: 2023/08/04 22:11:10 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef SCAVTRAP_HPP
+# define SCAVTRAP_HPP
+
 #include "ClapTrap.hpp"
 
-int	main(void)
-{
-	ClapTrap frag("Jack");
+class ScavTrap : public ClapTrap {
 
-	frag.takeDamage(4);
-	frag.attack("mel-faqu");
-	frag.beRepaired(3);
-	frag.takeDamage(5);
-	frag.takeDamage(2);
-	frag.beRepaired(12);
-	frag.beRepaired(10);
-	frag.beRepaired(1);
-	frag.takeDamage(10);
-	return (0);
-}
+	private:
+		const std::string	name;
+		int					HP;
+		int					EP;
+		int					AD;
+
+	public:
+		ScavTrap( void );
+		ScavTrap( std::string );
+		~ScavTrap( void );
+		ScavTrap( const ScavTrap& );
+		void	operator=( const ScavTrap& );
+
+		void guardGate();
+};
+
+#endif
