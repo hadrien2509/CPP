@@ -6,15 +6,15 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 16:49:50 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/08/04 14:59:29 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/08/07 16:28:02 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
 
 int	main(void)
 {
-	ClapTrap frag("Jack");
+	ScavTrap frag("Jack");
 
 	frag.takeDamage(4);
 	frag.attack("mel-faqu");

@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 15:15:45 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/08/04 18:41:22 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/08/07 16:12:31 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 
 class ClapTrap {
 	
-	private:
-		const std::string	name;
+	protected:
+		std::string			name;
 		int					HP;
 		int					EP;
 		int					AD;

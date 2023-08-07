@@ -6,14 +6,16 @@
 #    By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/14 18:00:17 by hgeissle          #+#    #+#              #
-#    Updated: 2023/08/04 18:31:34 by hgeissle         ###   ########.fr        #
+#    Updated: 2023/08/07 16:16:39 by hgeissle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ClapTrap
+NAME = FragTrap
 
 SRCS = main.cpp\
 		ClapTrap.cpp\
+		ScavTrap.cpp\
+		FragTrap.cpp\
 
 OBJS		= $(SRCS:.cpp=.o)
 RM			= rm -f

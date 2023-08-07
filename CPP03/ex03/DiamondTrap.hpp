@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   DiamondTrap.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/01 16:49:50 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/08/07 16:16:10 by hgeissle         ###   ########.fr       */
+/*   Created: 2023/08/07 09:57:56 by hgeissle          #+#    #+#             */
+/*   Updated: 2023/08/07 17:35:29 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef DIAMONDTRAP_HPP
+# define DIAMONDTRAP_HPP
 
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
 
-int	main(void)
-{
-	FragTrap frag("Jack");
+class DiamondTrap : public ScavTrap, public FragTrap {
 
-	frag.takeDamage(4);
-	frag.attack("mel-faqu");
-	frag.beRepaired(3);
-	frag.takeDamage(5);
-	frag.takeDamage(2);
-	frag.beRepaired(12);
-	frag.beRepaired(10);
-	frag.beRepaired(1);
-	frag.takeDamage(10);
-	return (0);
-}
+	private:
+		std::string	name;
+
+	public:
+		DiamondTrap( void );
+		DiamondTrap( std::string );
+		~DiamondTrap( void );
+		DiamondTrap( const DiamondTrap& );
+		void	operator=( const DiamondTrap& );
+
+		void	highFivesGuys(void);
+		void	attack(const std::string& target);
+};
+
+#endif

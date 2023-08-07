@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 22:11:10 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/08/04 22:11:10 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/08/07 15:48:45 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,6 @@
 
 class ScavTrap : public ClapTrap {
 
-	private:
-		const std::string	name;
-		int					HP;
-		int					EP;
-		int					AD;
-
 	public:
 		ScavTrap( void );
 		ScavTrap( std::string );
@@ -30,7 +24,8 @@ class ScavTrap : public ClapTrap {
 		ScavTrap( const ScavTrap& );
 		void	operator=( const ScavTrap& );
 
-		void guardGate();
+		void	guardGate();
+		void	attack(const std::string& target);
 };
 
 #endif
