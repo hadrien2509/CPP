@@ -12,15 +12,15 @@
 
 #include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap( void ) : name("DiamondTrap")
+DiamondTrap::DiamondTrap( void ) : ClapTrap("DiamondTrap_clap_name"), ScavTrap("ScavTrap"), FragTrap("FragTrap")
 {
 	std::cout << "DiamondTrap default constructor called" << std::endl;
-	ClapTrap::name = "DiamondTrap_clap_name";
+	this->name = "DiamondTrap";
 }
-DiamondTrap::DiamondTrap( const std::string str) : name(str)
+DiamondTrap::DiamondTrap( const std::string str) : ClapTrap(str + "_clap_name"), ScavTrap(str), FragTrap(str)
 {
 	std::cout << "DiamondTrap constructor called" << std::endl;
-	ClapTrap::name = str + "_clap_name";
+	this->name = str;
 }
 DiamondTrap::~DiamondTrap( void )
 {
@@ -29,6 +29,7 @@ DiamondTrap::~DiamondTrap( void )
 DiamondTrap::DiamondTrap( const DiamondTrap& other )
 {
 	std::cout << "DiamondTrap copy constructor called" << std::endl;
+	std::cout << this->FragTrap::HP << this->ScavTrap::EP << this->FragTrap::AD << std::endl;
 	this->name = other.name;
 	this->FragTrap::HP = other.FragTrap::HP;
 	this->ScavTrap::EP = other.ScavTrap::EP;
@@ -42,15 +43,7 @@ void	DiamondTrap::operator=( const DiamondTrap& other)
 	this->FragTrap::AD = other.FragTrap::AD;
 }
 
-void DiamondTrap::highFivesGuys(void)
+void DiamondTrap::whoAmI( void )
 {
-	std::cout << "DiamondTrap high fives everyone" << std::endl;
-}
-
-void DiamondTrap::attack(const std::string& target)
-{
-	if (this->FragTrap::HP <= 0 || this->ScavTrap::EP <=0)
-		return ;
-	std::cout << "ScavTrap " << this->name << " attacks " << target << ", causing " << this->FragTrap::AD << " points of damage!" << std::endl; 
-	this->ScavTrap::EP--;
+	std::cout << "My name is " << this->name << " and my ClapTrap::name is " << this->ClapTrap::name << std::endl;
 }

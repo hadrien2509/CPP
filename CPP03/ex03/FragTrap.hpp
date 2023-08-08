@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 09:57:56 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/08/07 16:22:23 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/08/08 18:16:19 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include "ClapTrap.hpp"
 
-class FragTrap : public ClapTrap {
+class FragTrap : virtual public ClapTrap {
 
 	public:
 		FragTrap( void );

@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 22:11:06 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/08/07 16:22:14 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/08/08 18:16:11 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ FragTrap::~FragTrap( void )
 {
 	std::cout << "FragTrap destructor called" << std::endl;
 }
-FragTrap::FragTrap( const FragTrap& other ) : FragTrap()
+FragTrap::FragTrap( const FragTrap& other )
 {
 	std::cout << "FragTrap copy constructor called" << std::endl;
 	this->name = other.name;
@@ -55,6 +55,6 @@ void FragTrap::attack(const std::string& target)
 {
 	if (this->HP <= 0 || this->EP <=0)
 		return ;
-	std::cout << "ScavTrap " << this->name << " attacks " << target << ", causing " << this->AD << " points of damage!" << std::endl; 
+	std::cout << "FragTrap " << this->name << " attacks " << target << ", causing " << this->AD << " points of damage!" << std::endl; 
 	this->EP--;
 }

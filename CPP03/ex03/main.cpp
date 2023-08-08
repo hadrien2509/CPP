@@ -6,16 +6,15 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 16:49:50 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/08/07 16:16:10 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/08/08 18:47:36 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
-#include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
 
 int	main(void)
 {
-	FragTrap frag("Jack");
+	DiamondTrap frag("Jack");
 
 	frag.takeDamage(4);
 	frag.attack("mel-faqu");
@@ -26,5 +25,6 @@ int	main(void)
 	frag.beRepaired(10);
 	frag.beRepaired(1);
 	frag.takeDamage(10);
+	frag.whoAmI();
 	return (0);
 }

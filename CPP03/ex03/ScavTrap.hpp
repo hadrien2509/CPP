@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 22:11:10 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/08/07 15:48:45 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/08/08 17:55:54 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include "ClapTrap.hpp"
 
-class ScavTrap : public ClapTrap {
+class ScavTrap : virtual public ClapTrap {
 
 	public:
 		ScavTrap( void );

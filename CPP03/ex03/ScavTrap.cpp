@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 22:11:06 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/08/07 16:19:29 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/08/08 18:19:29 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ ScavTrap::~ScavTrap( void )
 	std::cout << "ScavTrap destructor called" << std::endl;
 }
 
-ScavTrap::ScavTrap( const ScavTrap& other ) : ClapTrap()
+ScavTrap::ScavTrap( const ScavTrap& other )
 {
 	std::cout << "ScavTrap copy constructor called" << std::endl;
 	this->name = other.name;

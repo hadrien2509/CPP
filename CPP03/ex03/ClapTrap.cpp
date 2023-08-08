@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 15:29:30 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/08/07 16:14:22 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/08/08 14:55:48 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,14 @@ void	ClapTrap::operator=( const ClapTrap& other)
 
 void ClapTrap::attack(const std::string& target)
 {
-	if (this->HP <= 0 || this->EP <=0)
+	if (this->HP <= 0 || this->EP <= 0)
 		return ;
 	std::cout << "ClapTrap " << this->name << " attacks " << target << ", causing " << this->AD << " points of damage!" << std::endl; 
 	this->EP--;
 }
 void ClapTrap::takeDamage(unsigned int amount)
 {
-	if (this->HP <= 0 || this->EP <=0)
+	if (this->HP <= 0 || this->EP <= 0)
 		return ;
 	std::cout << "ClapTrap " << this->name << " gets hurt and loose " << amount << " HP !" << std::endl;
 	this->HP -= amount;
@@ -57,7 +57,7 @@ void ClapTrap::takeDamage(unsigned int amount)
 }
 void ClapTrap::beRepaired(unsigned int amount)
 {
-	if (this->HP <= 0 || this->EP <=0 || amount > 10)
+	if (this->HP <= 0 || this->EP <= 0 || amount > 10)
 		return ;
 	if (this->HP == 10)
 		std::cout << "ClapTrap " << this->name << "repairs itself but is already at max HP" << std::endl;
