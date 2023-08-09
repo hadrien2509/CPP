@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   WrongCat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,32 +10,32 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
+#include "WrongCat.hpp"
 
-Cat::Cat( void )
+WrongCat::WrongCat( void )
 {
-	std::cout << "Cat constructor called" << std::endl;
-	this->type = "Cat";
+	std::cout << "WrongCat constructor called" << std::endl;
+	this->type = "WrongCat";
 }
 
-Cat::Cat( const Cat& other )
-{
-	this->type = other.type;
-	std::cout << "Cat copy constructor called" << std::endl;
-}
-
-void	Cat::operator=( const Cat& other)
+WrongCat::WrongCat( const WrongCat& other )
 {
 	this->type = other.type;
-	std::cout << "Cat assignment operator called" << std::endl;
+	std::cout << "WrongCat copy constructor called" << std::endl;
 }
 
-Cat::~Cat( void )
+void	WrongCat::operator=( const WrongCat& other)
 {
-	std::cout << "Cat destructor called" << std::endl;
+	this->type = other.type;
+	std::cout << "WrongCat assignment operator called" << std::endl;
 }
 
-void	Cat::makeSound( void ) const
+WrongCat::~WrongCat( void )
+{
+	std::cout << "WrongCat destructor called" << std::endl;
+}
+
+void	WrongCat::makeSound( void ) const
 {
 	std::cout << "Miaouw....meow...miaouw" << std::endl;
 }

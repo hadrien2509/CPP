@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 12:59:28 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/08/03 19:27:50 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/08/09 18:30:14 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ class Point {
 		Point( const float , const float );
 		Point( const Point& );
 		void	operator=( const Point& );
+
 		Fixed getX( void ) const;
 		Fixed getY( void ) const;
 };

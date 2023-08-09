@@ -6,13 +6,16 @@
 #    By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/14 18:00:17 by hgeissle          #+#    #+#              #
-#    Updated: 2023/08/07 16:16:39 by hgeissle         ###   ########.fr        #
+#    Updated: 2023/08/09 13:04:30 by hgeissle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = ex00
 
 SRCS = main.cpp\
+		Cat.cpp\
+		Dog.cpp\
+		Animal.cpp\
 		
 
 OBJS		= $(SRCS:.cpp=.o)

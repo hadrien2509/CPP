@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 16:49:50 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/08/04 14:59:29 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/08/09 18:37:46 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,9 @@ int	main(void)
 	std::cout << bsp(a, b, c, s) << std::endl;
 
 	Point	t(1, 1);
+	std::cout << bsp(a, b, c, t) << std::endl;
+	
+	Point	u(-2, -2);
 	std::cout << bsp(a, b, c, t) << std::endl;
 	return (0);
 }

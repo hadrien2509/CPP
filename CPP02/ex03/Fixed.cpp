@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 17:46:56 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/08/04 14:15:31 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/08/09 18:26:39 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,9 @@ Fixed	Fixed::operator*( const Fixed& other )
 Fixed	Fixed::operator/( const Fixed& other )
 {
 	Fixed val(*this);
-	
+
+	if (other.val == 0)
+		return (Fixed(0));
 	val.setRawBits((long)this->val * (1 << this->frac) / (long)other.val);
 	return (val);
 }

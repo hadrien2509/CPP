@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 12:12:45 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/08/08 12:12:45 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/08/09 12:41:50 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,13 @@ class Animal {
 		std::string	type;
 
 	public:
-		void	makeSound( void );
+		Animal( void );
+		virtual ~Animal( void );
+		Animal( const Animal& );
+		void	operator=( const Animal& );
 
+		virtual void	makeSound( void ) const;
+		std::string	getType( void ) const;
 };
 
 #endif

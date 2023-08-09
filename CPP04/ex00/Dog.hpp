@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 12:12:45 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/08/08 12:12:45 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/08/09 12:42:32 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class Dog : public Animal {
 		Dog( const Dog& );
 		void	operator=( const Dog& );
 
-		void	makeSound( void );
+		void	makeSound( void ) const;
 };
 
 #endif
