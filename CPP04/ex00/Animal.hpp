@@ -22,8 +22,7 @@ class Animal {
 		std::string	type;
 
 	public:
-
-	private:
+		void	makeSound( void );
 
 };
 

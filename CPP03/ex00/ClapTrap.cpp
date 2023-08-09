@@ -28,6 +28,7 @@ ClapTrap::ClapTrap( const ClapTrap& other ) : name(other.name), HP(other.HP), EP
 {
 	std::cout << "Copy constructor called" << std::endl;
 }
+
 void	ClapTrap::operator=( const ClapTrap& other)
 {
 	this->name = other.name;
@@ -43,6 +44,7 @@ void ClapTrap::attack(const std::string& target)
 	std::cout << "ClapTrap " << this->name << " attacks " << target << ", causing " << this->AD << " points of damage!" << std::endl; 
 	this->EP--;
 }
+
 void ClapTrap::takeDamage(unsigned int amount)
 {
 	if (this->HP <= 0 || this->EP <=0)
@@ -55,6 +57,7 @@ void ClapTrap::takeDamage(unsigned int amount)
 		this->HP = 0;
 	}
 }
+
 void ClapTrap::beRepaired(unsigned int amount)
 {
 	if (this->HP <= 0 || this->EP <=0 || amount > 10)

@@ -10,21 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
-#include "FragTrap.hpp"
+#include "Dog.hpp"
+#include "Cat.hpp"
 
 int	main(void)
 {
-	FragTrap frag("Jack");
-
-	frag.takeDamage(4);
-	frag.attack("mel-faqu");
-	frag.beRepaired(3);
-	frag.takeDamage(5);
-	frag.takeDamage(2);
-	frag.beRepaired(12);
-	frag.beRepaired(10);
-	frag.beRepaired(1);
-	frag.takeDamage(10);
+	
 	return (0);
 }

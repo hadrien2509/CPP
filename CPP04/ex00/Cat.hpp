@@ -23,8 +23,7 @@ class Cat : public Animal {
 		Cat( const Cat& );
 		void	operator=( const Cat& );
 
-	private:
-
+		void	makeSound( void );
 };
 
 #endif
