@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   FragTrap.hpp                                       :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/07 09:57:56 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/08/10 18:18:33 by hgeissle         ###   ########.fr       */
+/*   Created: 2023/08/08 12:12:45 by hgeissle          #+#    #+#             */
+/*   Updated: 2023/08/10 13:53:16 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FRAGTRAP_HPP
-# define FRAGTRAP_HPP
+#ifndef CAT_HPP
+# define CAT_HPP
 
-#include "ClapTrap.hpp"
+#include "Animal.hpp"
 
-class FragTrap : public ClapTrap {
+class Cat : public Animal {
+
+	private:
+		Brain		*brain;
 
 	public:
-		FragTrap( void );
-		FragTrap( std::string );
-		~FragTrap( void );
-		FragTrap( const FragTrap& );
-		void	operator=( const FragTrap& );
+		Cat( void );
+		~Cat( void );
+		Cat( const Cat& );
+		void	operator=( const Cat& );
 
-		void	highFivesGuys(void);
-		void	attack(const std::string& target);
-		void	beRepaired(unsigned int amount);
+		void	makeSound( void ) const;
 };
 
 #endif

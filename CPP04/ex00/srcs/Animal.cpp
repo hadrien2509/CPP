@@ -6,11 +6,11 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 12:07:37 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/08/09 12:41:38 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/08/10 11:56:50 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "../header_files/Animal.hpp"
 
 Animal::Animal( void )
 {

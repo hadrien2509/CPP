@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   FragTrap.hpp                                       :+:      :+:    :+:   */
+/*   WrongCat.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/07 09:57:56 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/08/10 18:18:33 by hgeissle         ###   ########.fr       */
+/*   Created: 2023/08/08 12:12:45 by hgeissle          #+#    #+#             */
+/*   Updated: 2023/08/09 14:44:50 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FRAGTRAP_HPP
-# define FRAGTRAP_HPP
+#ifndef WRONGCAT_HPP
+# define WRONGCAT_HPP
 
-#include "ClapTrap.hpp"
+#include "WrongAnimal.hpp"
 
-class FragTrap : public ClapTrap {
+class WrongCat : public WrongAnimal {
 
 	public:
-		FragTrap( void );
-		FragTrap( std::string );
-		~FragTrap( void );
-		FragTrap( const FragTrap& );
-		void	operator=( const FragTrap& );
+		WrongCat( void );
+		~WrongCat( void );
+		WrongCat( const WrongCat& );
+		void	operator=( const WrongCat& );
 
-		void	highFivesGuys(void);
-		void	attack(const std::string& target);
-		void	beRepaired(unsigned int amount);
+		void	makeSound( void ) const;
 };
 
 #endif

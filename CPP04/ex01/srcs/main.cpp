@@ -6,32 +6,30 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 16:49:50 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/08/10 17:44:06 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/08/10 15:02:42 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
+#include "../header_files/Dog.hpp"
+#include "../header_files/Cat.hpp"
+#include "../header_files/WrongCat.hpp"
 
 int	main(void)
 {
-	ScavTrap frag("Jack");
+	{
+		const Animal* j = new Dog();
+		const Animal* i = new Cat();
 
-	frag.takeDamage(4);
-	frag.attack("mel-faqu");
-	frag.beRepaired(3);
-	frag.takeDamage(5);
-	frag.takeDamage(2);
-	frag.beRepaired(12);
-	frag.beRepaired(10);
-	frag.beRepaired(1);
-	frag.takeDamage(10);
-	frag.guardGate();
-	frag.takeDamage(99);
-	frag.beRepaired(1);
-	frag.takeDamage(10);
-	frag.guardGate();
-	frag.guardGate();
-	frag.guardGate();
-	frag.guardGate();
+		delete j;//should not create a leak
+		delete i;
+	}
+	{
+		Animal*	a = new Animal[10];
+		
+		for (int i = 0; i < 5; ++i)
+		{
+			a[i] = new ;
+		}
+	}
 	return (0);
 }

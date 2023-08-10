@@ -6,11 +6,11 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 20:32:04 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/08/09 12:42:20 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/08/10 11:57:16 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
+#include "../header_files/Dog.hpp"
 
 Dog::Dog( void )
 {

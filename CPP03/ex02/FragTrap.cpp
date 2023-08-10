@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 22:11:06 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/08/07 16:22:14 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/08/10 19:33:53 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,12 @@ FragTrap::FragTrap( const std::string str) : ClapTrap(str)
 	this->EP = 100;
 	this->AD = 30;
 }
+
 FragTrap::~FragTrap( void )
 {
 	std::cout << "FragTrap destructor called" << std::endl;
 }
+
 FragTrap::FragTrap( const FragTrap& other )
 {
 	std::cout << "FragTrap copy constructor called" << std::endl;
@@ -48,13 +50,31 @@ void	FragTrap::operator=( const FragTrap& other)
 
 void FragTrap::highFivesGuys(void)
 {
-	std::cout << "FragTrap high fives everyone" << std::endl;
+	if (this->HP > 0)
+		std::cout << "FragTrap high fives everyone" << std::endl;
 }
 
 void FragTrap::attack(const std::string& target)
 {
 	if (this->HP <= 0 || this->EP <=0)
 		return ;
-	std::cout << "ScavTrap " << this->name << " attacks " << target << ", causing " << this->AD << " points of damage!" << std::endl; 
+	std::cout << "FragTrap " << this->name << " attacks " << target << ", causing " << this->AD << " points of damage!" << std::endl; 
 	this->EP--;
+	if (this->EP == 0)
+		std::cout << "FragTrap" << this->name << " has no energy left" << std::endl;
+}
+
+void FragTrap::beRepaired(unsigned int amount)
+{
+	if (this->HP <= 0 || this->EP <=0 || amount > 100)
+		return ;
+	if (this->HP == 100)
+		std::cout << "ClapTrap " << this->name << " repairs itself but is already at max HP" << std::endl;
+	std::cout << "ClapTrap " << this->name << " repairs itself for an amount of " << amount << " HP" << std::endl;
+	this->HP += amount;
+	this->EP--;
+	if (this->EP == 0)
+		std::cout << "FragTrap" << this->name << " has no energy left" << std::endl;
+	if (this->HP > 100)
+		this->HP = 100;
 }

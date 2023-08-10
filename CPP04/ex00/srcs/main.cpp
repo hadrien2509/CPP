@@ -6,12 +6,13 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 16:49:50 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/08/09 14:48:11 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/08/10 11:58:31 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
-#include "Cat.hpp"
+#include "../header_files/Dog.hpp"
+#include "../header_files/Cat.hpp"
+#include "../header_files/WrongCat.hpp"
 
 int	main(void)
 {
@@ -52,9 +53,9 @@ int	main(void)
 	}
 	{
 		std::cout << "\nLast test :\n" << std::endl;
-		const Animal* meta = new Animal();
+		const WrongAnimal* meta = new WrongAnimal();
 		const Animal* j = new Dog();
-		const Animal* i = new Cat();
+		const WrongAnimal* i = new WrongCat();
 		std::cout << j->getType() << " " << std::endl;
 		std::cout << i->getType() << " " << std::endl;
 		i->makeSound(); //will output the cat sound!

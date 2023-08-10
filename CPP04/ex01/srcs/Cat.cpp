@@ -6,27 +6,32 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 20:32:01 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/08/09 12:42:27 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/08/10 14:21:14 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
+#include "../header_files/Cat.hpp"
 
 Cat::Cat( void )
 {
 	std::cout << "Cat constructor called" << std::endl;
 	this->type = "Cat";
+	this->brain = new Brain();
 }
 
 Cat::Cat( const Cat& other )
 {
 	this->type = other.type;
+	this->brain = new Brain();
+	*(this->brain) = *(other.brain);
 	std::cout << "Cat copy constructor called" << std::endl;
 }
 
 void	Cat::operator=( const Cat& other)
 {
 	this->type = other.type;
+	this->brain = new Brain();
+	*(this->brain) = *(other.brain);
 	std::cout << "Cat assignment operator called" << std::endl;
 }
 

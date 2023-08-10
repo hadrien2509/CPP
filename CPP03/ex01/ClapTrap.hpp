@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 15:15:45 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/08/07 16:29:23 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/08/10 19:42:08 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ class ClapTrap {
 		ClapTrap( const ClapTrap& );
 		void	operator=( const ClapTrap& );
 
-		void attack(const std::string& target);
+		virtual void attack(const std::string& target);
 		void takeDamage(unsigned int amount);
-		void beRepaired(unsigned int amount);
+		virtual void beRepaired(unsigned int amount);
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 15:29:30 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/08/07 16:14:10 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/08/10 18:04:44 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ ClapTrap::ClapTrap( void ) : name("ClapTrap"), HP(10), EP(10), AD(0)
 {
 	std::cout << "ClapTrap default constructor called" << std::endl;
 }
-ClapTrap::ClapTrap( const std::string str) : name(str), HP(10), EP(10), AD(10)
+ClapTrap::ClapTrap( const std::string str) : name(str), HP(10), EP(10), AD(0)
 {
 	std::cout << "ClapTrap constructor called" << std::endl;
 }
@@ -38,14 +38,17 @@ void	ClapTrap::operator=( const ClapTrap& other)
 
 void ClapTrap::attack(const std::string& target)
 {
-	if (this->HP <= 0 || this->EP <=0)
+	if (this->HP <= 0 || this->EP <= 0)
 		return ;
 	std::cout << "ClapTrap " << this->name << " attacks " << target << ", causing " << this->AD << " points of damage!" << std::endl; 
 	this->EP--;
+	if (this->EP == 0)
+		std::cout << "ClapTrap" << this->name << " has no energy left" << std::endl;
 }
+
 void ClapTrap::takeDamage(unsigned int amount)
 {
-	if (this->HP <= 0 || this->EP <=0)
+	if (this->HP <= 0)
 		return ;
 	std::cout << "ClapTrap " << this->name << " gets hurt and loose " << amount << " HP !" << std::endl;
 	this->HP -= amount;
@@ -55,15 +58,18 @@ void ClapTrap::takeDamage(unsigned int amount)
 		this->HP = 0;
 	}
 }
+
 void ClapTrap::beRepaired(unsigned int amount)
 {
-	if (this->HP <= 0 || this->EP <=0 || amount > 10)
+	if (this->HP <= 0 || this->EP <= 0 || amount > 10)
 		return ;
 	if (this->HP == 10)
-		std::cout << "ClapTrap " << this->name << "repairs itself but is already at max HP" << std::endl;
-	std::cout << "ClapTrap " << this->name << " repairs itself for an amount of " << amount << " health points" << std::endl;
+		std::cout << "ClapTrap " << this->name << " repairs itself but is already at max HP" << std::endl;
+	std::cout << "ClapTrap " << this->name << " repairs itself for an amount of " << amount << " HP" << std::endl;
 	this->HP += amount;
 	this->EP--;
+	if (this->EP == 0)
+		std::cout << "ClapTrap" << this->name << " has no energy left" << std::endl;
 	if (this->HP > 10)
 		this->HP = 10;
 }
