@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 15:29:30 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/08/10 18:04:44 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/08/17 16:51:29 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,22 @@ ClapTrap::ClapTrap( void ) : name("ClapTrap"), HP(10), EP(10), AD(0)
 {
 	std::cout << "ClapTrap default constructor called" << std::endl;
 }
-ClapTrap::ClapTrap( const std::string str) : name(str), HP(10), EP(10), AD(0)
+
+ClapTrap::ClapTrap( const std::string str ) : name(str), HP(10), EP(10), AD(0)
 {
 	std::cout << "ClapTrap constructor called" << std::endl;
 }
+
 ClapTrap::~ClapTrap( void )
 {
 		std::cout << "ClapTrap destructor called" << std::endl;
 }
+
 ClapTrap::ClapTrap( const ClapTrap& other ) : name(other.name), HP(other.HP), EP(other.EP), AD(other.AD)
 {
 	std::cout << "ClapTrap copy constructor called" << std::endl;
 }
+
 void	ClapTrap::operator=( const ClapTrap& other)
 {
 	this->name = other.name;

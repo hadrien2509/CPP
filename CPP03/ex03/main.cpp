@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 16:49:50 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/08/10 19:43:51 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/08/17 14:58:36 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int	main(void)
 	frag.beRepaired(10);
 	frag.beRepaired(1);
 	frag.takeDamage(10);
+	frag.guardGate();
+	frag.highFivesGuys();
 	frag.whoAmI();
 	return (0);
 }

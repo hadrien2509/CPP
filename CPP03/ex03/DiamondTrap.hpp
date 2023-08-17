@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 09:57:56 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/08/10 20:03:56 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/08/16 13:57:11 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ class DiamondTrap : public ScavTrap, public FragTrap {
 		~DiamondTrap( void );
 		void	operator=( const DiamondTrap& );
 
-		using ScavTrap::attack;
 		void    whoAmI( void );
 };
 

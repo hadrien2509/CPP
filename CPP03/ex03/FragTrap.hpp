@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 09:57:56 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/08/10 18:30:56 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/08/14 17:32:34 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,7 @@ class FragTrap : virtual public ClapTrap {
 		FragTrap( const FragTrap& );
 		void	operator=( const FragTrap& );
 
-		void	highFivesGuys(void);
-		void	attack(const std::string& target);
-		void	beRepaired(unsigned int amount);
+		void			highFivesGuys(void);
 };
 
 #endif
