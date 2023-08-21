@@ -1,33 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   AAnimal.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 12:12:45 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/08/21 17:50:44 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/08/21 18:45:26 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-# define CAT_HPP
+#ifndef AANIMAL_HPP
+# define AANIMAL_HPP
 
-#include "Animal.hpp"
+#include <string>
+#include <array>
+#include <iostream>
+#include "Brain.hpp"
 
-class Cat : public Animal {
+class AAnimal {
 
-	private:
-		Brain		*brain;
+	protected:
+		std::string	type;
 
 	public:
-		Cat( void );
-		~Cat( void );
-		Cat( const Cat& );
-		void	operator=( const Cat& );
+		AAnimal( void );
+		virtual ~AAnimal( void );
+		AAnimal( const AAnimal& );
+		void	operator=( const AAnimal& );
 
-		void	makeSound( void ) const;
-		Brain	*getBrain( void ) const;
+		virtual void	makeSound( void ) const;
+		std::string	getType( void ) const;
 };
 
 #endif

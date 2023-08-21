@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 12:12:45 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/08/21 17:50:44 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/08/21 18:49:37 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-# define CAT_HPP
+#ifndef DOG_HPP
+# define DOG_HPP
 
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 
-class Cat : public Animal {
+class Dog : public AAnimal {
 
 	private:
 		Brain		*brain;
 
 	public:
-		Cat( void );
-		~Cat( void );
-		Cat( const Cat& );
-		void	operator=( const Cat& );
+		Dog( void );
+		~Dog( void );
+		Dog( const Dog& );
+		void	operator=( const Dog& );
 
 		void	makeSound( void ) const;
 		Brain	*getBrain( void ) const;

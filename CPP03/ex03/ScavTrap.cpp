@@ -6,32 +6,33 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 22:11:06 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/08/17 18:11:07 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/08/21 12:04:19 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap( void ) : ClapTrap("ClapTrap_clap_name")
+ScavTrap::ScavTrap( void ) : ClapTrap("ScavTrap")
 {
 	std::cout << "ScavTrap default constructor called" << std::endl;
-	this->name = "ScavTrap";
 	this->HP = 100;
 	this->EP = 50;
 	this->AD = 20;
 }
+
 ScavTrap::ScavTrap( const std::string str) : ClapTrap( str )
 {
 	std::cout << "ScavTrap constructor called" << std::endl;
-	this->name = str;
 	this->HP = 100;
 	this->EP = 50;
 	this->AD = 20;
 }
+
 ScavTrap::~ScavTrap( void )
 {
 	std::cout << "ScavTrap destructor called" << std::endl;
 }
+
 ScavTrap::ScavTrap( const ScavTrap& other )
 {
 	std::cout << "ScavTrap copy constructor called" << std::endl;
@@ -40,6 +41,7 @@ ScavTrap::ScavTrap( const ScavTrap& other )
 	this->EP = other.EP;
 	this->AD = other.AD;
 }
+
 void	ScavTrap::operator=( const ScavTrap& other)
 {
 	this->name = other.name;

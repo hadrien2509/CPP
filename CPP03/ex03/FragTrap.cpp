@@ -6,16 +6,15 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 22:11:06 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/08/17 18:11:37 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/08/21 11:38:35 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
 
-FragTrap::FragTrap( void ) : ClapTrap("ClapTrap")
+FragTrap::FragTrap( void ) : ClapTrap("FragTrap")
 {
 	std::cout << "FragTrap default constructor called" << std::endl;
-	this->name = "FragTrap";
 	this->HP = 100;
 	this->EP = 100;
 	this->AD = 30;
@@ -24,7 +23,6 @@ FragTrap::FragTrap( void ) : ClapTrap("ClapTrap")
 FragTrap::FragTrap( const std::string str) : ClapTrap(str)
 {
 	std::cout << "FragTrap constructor called" << std::endl;
-	this->name = str;
 	this->HP = 100;
 	this->EP = 100;
 	this->AD = 30;

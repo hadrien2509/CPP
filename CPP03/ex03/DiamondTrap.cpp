@@ -12,7 +12,7 @@
 
 #include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap( void ) : ClapTrap( "DiamondTrap_clap_name" ), ScavTrap( "DiamondTrap" ), FragTrap( "DiamondTrap" )
+DiamondTrap::DiamondTrap( void ) : ClapTrap( "DiamondTrap_clap_name" )
 {
 	std::cout << "DiamondTrap default constructor called" << std::endl;
 	this->name = "DiamondTrap";
@@ -21,7 +21,7 @@ DiamondTrap::DiamondTrap( void ) : ClapTrap( "DiamondTrap_clap_name" ), ScavTrap
 	this->AD = 30;
 }
 
-DiamondTrap::DiamondTrap( const std::string str) : ClapTrap( str + "_clap_name" ), ScavTrap( str ), FragTrap( str )
+DiamondTrap::DiamondTrap( const std::string str) : ClapTrap( str + "_clap_name" )
 {
 	std::cout << "DiamondTrap constructor called" << std::endl;
 	this->name = str;
@@ -42,6 +42,7 @@ DiamondTrap::DiamondTrap( const DiamondTrap& other )
 	this->HP = other.HP;
 	this->EP = other.EP;
 	this->AD = other.AD;
+	this->ClapTrap::name = other.ClapTrap::name;
 }
 
 void	DiamondTrap::operator=( const DiamondTrap& other)
@@ -50,6 +51,7 @@ void	DiamondTrap::operator=( const DiamondTrap& other)
 	this->HP = other.HP;
 	this->EP = other.EP;
 	this->AD = other.AD;
+	this->ClapTrap::name = other.ClapTrap::name;
 }
 
 void DiamondTrap::whoAmI( void )

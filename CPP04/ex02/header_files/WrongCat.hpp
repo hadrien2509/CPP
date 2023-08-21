@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   WrongCat.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 12:12:45 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/08/21 17:50:44 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/08/09 14:44:50 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-# define CAT_HPP
+#ifndef WRONGCAT_HPP
+# define WRONGCAT_HPP
 
-#include "Animal.hpp"
+#include "WrongAnimal.hpp"
 
-class Cat : public Animal {
-
-	private:
-		Brain		*brain;
+class WrongCat : public WrongAnimal {
 
 	public:
-		Cat( void );
-		~Cat( void );
-		Cat( const Cat& );
-		void	operator=( const Cat& );
+		WrongCat( void );
+		~WrongCat( void );
+		WrongCat( const WrongCat& );
+		void	operator=( const WrongCat& );
 
 		void	makeSound( void ) const;
-		Brain	*getBrain( void ) const;
 };
 
 #endif

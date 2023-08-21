@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 12:12:45 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/08/10 13:53:49 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/08/21 17:50:33 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ class Dog : public Animal {
 		void	operator=( const Dog& );
 
 		void	makeSound( void ) const;
+		Brain	*getBrain( void ) const;
 };
 
 #endif

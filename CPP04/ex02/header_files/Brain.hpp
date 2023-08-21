@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/08 12:12:45 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/08/21 17:50:44 by hgeissle         ###   ########.fr       */
+/*   Created: 2023/08/10 12:59:42 by hgeissle          #+#    #+#             */
+/*   Updated: 2023/08/21 18:48:59 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-# define CAT_HPP
+#ifndef __BRAIN_H__
+#define __BRAIN_H__
 
-#include "Animal.hpp"
+# include <string>
+# include <iostream>
 
-class Cat : public Animal {
-
+class Brain {
+	
 	private:
-		Brain		*brain;
+		std::string	ideas[100];
 
 	public:
-		Cat( void );
-		~Cat( void );
-		Cat( const Cat& );
-		void	operator=( const Cat& );
+		Brain( void );
+		~Brain( void );
+		Brain( const Brain& );
+		void	operator=( const Brain& );
 
-		void	makeSound( void ) const;
-		Brain	*getBrain( void ) const;
-};
+		void	getIdea( int index ) const;
+		void	setIdea( int index, std::string idea );
+}; 
 
-#endif
+#endif // __BRAIN_H__

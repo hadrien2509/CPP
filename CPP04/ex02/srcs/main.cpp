@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 16:49:50 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/08/21 18:38:05 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/08/21 18:58:12 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ int	main(void)
 {
 	std::cout << "\n\033[1;31mPersonal tests\033[0m\n" << std::endl;
 	{
-		const Animal* j = new Dog();
-		const Animal* i = new Cat();
+		const AAnimal* j = new Dog();
+		const AAnimal* i = new Cat();
 		
 		delete j;//should not create a leak
 		delete i;
@@ -51,7 +51,7 @@ int	main(void)
 	}
 	std::cout << "\n\033[1;31mArray test\033[0m\n" << std::endl;
 	{
-		Animal	*array[4];
+		AAnimal	*array[4];
 
 		for (int i = 0; i < 2; i++)
 		{
@@ -66,6 +66,9 @@ int	main(void)
 		{
 			delete array[i];
 		}
+	}
+	{
+		AAnimal	animal;
 	}
 	return (0);
 }

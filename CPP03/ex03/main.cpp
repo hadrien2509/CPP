@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 16:49:50 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/08/17 14:58:36 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/08/21 13:15:00 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,41 @@
 
 int	main(void)
 {
-	DiamondTrap frag("Jack");
+	{
+		DiamondTrap frag("Jack");
+		DiamondTrap	frag2("Nick");
+		
+		frag2 = frag;
+		frag2.guardGate();
+		frag2.highFivesGuys();
+		frag2.whoAmI();
+		frag2.highFivesGuys();
+		frag.takeDamage(100);
+		frag2 = frag;
+		frag2.highFivesGuys();
+	}
+	std::cout << std::endl;
+	{
+		DiamondTrap frag("Chia Labeouf");
 
-	frag.takeDamage(4);
-	frag.attack("mel-faqu");
-	frag.beRepaired(3);
-	frag.takeDamage(5);
-	frag.takeDamage(2);
-	frag.beRepaired(12);
-	frag.beRepaired(10);
-	frag.beRepaired(1);
-	frag.takeDamage(10);
-	frag.guardGate();
-	frag.highFivesGuys();
-	frag.whoAmI();
-	return (0);
+		for (int i = 0; i < 100; ++i)
+			frag.attack("a random person");
+		frag.beRepaired(5);
+	}
+	std::cout << std::endl;
+	{
+		DiamondTrap frag("Luke");
+
+		for (int i = 0; i < 4; ++i)
+			frag.takeDamage(25);
+		frag.beRepaired(10);
+	}
+	std::cout << std::endl;
+	{
+		DiamondTrap frag("George");
+
+		for (int i = 0; i < 3; ++i)
+			frag.takeDamage(25);
+		frag.beRepaired(75);
+	}
 }

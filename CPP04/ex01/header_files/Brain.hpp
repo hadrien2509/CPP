@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 12:59:42 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/08/10 14:18:44 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/08/21 18:49:07 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <string>
 # include <iostream>
-# include "Animal.hpp"
 
 class Brain {
 	
@@ -28,7 +27,8 @@ class Brain {
 		Brain( const Brain& );
 		void	operator=( const Brain& );
 
-		std::string	getIdeas( void );
+		void	getIdea( int index ) const;
+		void	setIdea( int index, std::string idea );
 }; 
 
 #endif // __BRAIN_H__
