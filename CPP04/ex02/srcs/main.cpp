@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 16:49:50 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/08/21 18:58:12 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/08/22 17:29:55 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,6 @@ int	main(void)
 		{
 			delete array[i];
 		}
-	}
-	{
-		AAnimal	animal;
 	}
 	return (0);
 }

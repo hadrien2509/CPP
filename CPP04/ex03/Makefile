@@ -6,19 +6,18 @@
 #    By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/14 18:00:17 by hgeissle          #+#    #+#              #
-#    Updated: 2023/08/21 17:12:55 by hgeissle         ###   ########.fr        #
+#    Updated: 2023/08/22 14:02:02 by hgeissle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ex01
+NAME = ex03
 
 SRCS = srcs/main.cpp\
-		srcs/Cat.cpp\
-		srcs/Dog.cpp\
-		srcs/Animal.cpp\
-		srcs/WrongCat.cpp\
-		srcs/WrongAnimal.cpp\
-		srcs/Brain.cpp\
+		srcs/AMateria.cpp\
+		srcs/Character.cpp\
+		srcs/Cure.cpp\
+		srcs/Ice.cpp\
+		srcs/MateriaSource.cpp\
 		
 
 OBJS		= $(SRCS:.cpp=.o)

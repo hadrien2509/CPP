@@ -6,11 +6,11 @@
 #    By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/14 18:00:17 by hgeissle          #+#    #+#              #
-#    Updated: 2023/08/21 18:53:10 by hgeissle         ###   ########.fr        #
+#    Updated: 2023/08/22 14:00:57 by hgeissle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ex01
+NAME = ex02
 
 SRCS = srcs/main.cpp\
 		srcs/Cat.cpp\
