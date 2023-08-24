@@ -6,18 +6,18 @@
 #    By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/14 18:00:17 by hgeissle          #+#    #+#              #
-#    Updated: 2023/08/23 11:56:48 by hgeissle         ###   ########.fr        #
+#    Updated: 2023/08/24 19:38:51 by hgeissle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = ex02
 
-SRCS = srcs/main.cpp\
-		srcs/AMateria.cpp\
-		srcs/Character.cpp\
-		srcs/Cure.cpp\
-		srcs/Ice.cpp\
-		srcs/MateriaSource.cpp\
+SRCS =	srcs/main.cpp\
+		srcs/Bureaucrat.cpp\
+		srcs/AForm.cpp\
+		srcs/ShrubberyCreationForm.cpp\
+		srcs/RobotomyRequestForm.cpp\
+		srcs/PresidentialPardonForm.cpp\
 		
 
 OBJS		= $(SRCS:.cpp=.o)

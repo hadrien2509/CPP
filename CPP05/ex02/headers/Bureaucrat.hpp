@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 11:59:14 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/08/24 15:43:24 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/08/24 18:04:58 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 
 #include <string>
 #include <iostream>
-#include "Form.hpp"
+#include "AForm.hpp"
 
-class Form;
+class AForm;
 
 class Bureaucrat
 {
@@ -49,7 +49,8 @@ class Bureaucrat
 				virtual const char* what() const throw();
 		};
 
-		void signForm(Form &src);
+		void signForm(AForm &src);
+		void executeForm(AForm const &executor);
 };
 
 std::ostream &operator<<(std::ostream &out, Bureaucrat const &src);

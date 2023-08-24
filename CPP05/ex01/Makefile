@@ -6,7 +6,7 @@
 #    By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/14 18:00:17 by hgeissle          #+#    #+#              #
-#    Updated: 2023/08/23 11:57:37 by hgeissle         ###   ########.fr        #
+#    Updated: 2023/08/24 11:40:32 by hgeissle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ NAME = ex01
 
 SRCS = srcs/main.cpp\
 		srcs/Bureaucrat.cpp\
+		srcs/Form.cpp\
 		
 
 OBJS		= $(SRCS:.cpp=.o)

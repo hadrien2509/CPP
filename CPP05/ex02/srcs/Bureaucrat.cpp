@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 11:59:01 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/08/24 15:43:10 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/08/24 18:05:25 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,14 @@ std::ostream &operator<<(std::ostream &out, Bureaucrat const &src)
 	return (out);
 }
 
-void Bureaucrat::signForm(Form &src)
+void Bureaucrat::signForm(AForm &src)
 {
 	src.beSigned(*this);
+}
+
+void Bureaucrat::executeForm(AForm const &src)
+{
+	src.execute(*this);
 }
 
 // ---------------------- BureaucratException Functions -----------------------
