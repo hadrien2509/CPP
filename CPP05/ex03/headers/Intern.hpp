@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 11:34:46 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/08/25 11:52:50 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/08/25 16:49:20 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,12 @@ class Intern
 		~Intern();
 	
 		AForm *makeForm(std::string name, std::string target);
+
+		class UnknownFormException : public std::exception
+		{
+			public:
+				virtual const char* what() const throw();
+		};
 };
 
 #endif

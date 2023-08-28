@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 15:04:39 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/08/25 10:14:55 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/08/25 16:53:36 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,12 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 	if (this->getGradeToExecute() < executor.getGrade())
 	{
 		std::cout << "Bureaucrat " << executor.getName() << " cannot execute " << this->getName() << " because his grade is too low." << std::endl;
-		return ;
+		throw AForm::GradeTooLowException();
 	}
 	if (this->isItSigned() == false)
 	{
 		std::cout << "Bureaucrat " << executor.getName() << " cannot execute " << this->getName() << " because the form is not signed." << std::endl;
-		return ;
+		throw AForm::FormNotSignedException();
 	}
 	else
 		std::cout << executor.getName() << " executes " << this->getName() << std::endl;

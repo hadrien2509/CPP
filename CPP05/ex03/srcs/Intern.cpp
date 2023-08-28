@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 11:42:57 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/08/25 11:52:21 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/08/25 16:49:39 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,17 @@ Intern &Intern::operator=(Intern const &src)
 AForm *Intern::makeForm(std::string formName, std::string target)
 {
 	std::string array[3] = {"robotomy request", "presidential pardon", "shrubbery creation"};
-	int index;
+	int i = 0;
 
-	for (int i = 0; i < 3; i++)
+	for (i = 0; i < 3; i++)
 	{
 		if (array[i] == formName)
+		{
 			std::cout << "Intern creates " << formName << std::endl;
+			break ;
+		}
 	}
-	switch (index)
+	switch (i)
 	{
 		case 0:
 			return (new RobotomyRequestForm(target));
@@ -54,6 +57,12 @@ AForm *Intern::makeForm(std::string formName, std::string target)
 		case 2:
 			return (new ShrubberyCreationForm(target));
 		default:
-			std::cout << "Intern cannot create " << formName << " because the form name is not valid." << std::endl;
+			throw Intern::UnknownFormException();
 	}
+	return 0;
+}
+
+const char *Intern::UnknownFormException::what() const throw()
+{
+	return ("Intern cannot create the form because the form name is not valid.");
 }

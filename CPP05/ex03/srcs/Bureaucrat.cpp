@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 11:59:01 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/08/24 18:05:25 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/08/25 16:01:07 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,4 +94,9 @@ const char *Bureaucrat::GradeTooHighException::what() const throw()
 const char *Bureaucrat::GradeTooLowException::what() const throw()
 {
 	return ("Grade too low for a bureaucrat");
+}
+
+const char *Bureaucrat::GradeTooLowToExecuteException::what() const throw()
+{
+	return ("Grade too low to execute the form");
 }

@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 18:12:47 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/08/24 17:33:31 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/08/25 16:22:25 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,13 @@ void Form::beSigned(Bureaucrat &src)
 		this->_signed = 1;
 		std::cout << src.getName() << " signed " << this->_name << std::endl;
 	}
+	else if (this->_signed == 1)
+		std::cout << src.getName() << " cannot sign " << this->_name << " because the form is already signed." << std::endl;
 	else
-		std::cout << src.getName() << " couldn't sign " << this->_name << " because his hierarchical position is too low.... he needs to ask his manager" << std::endl;
+	{
+		std::cout << src.getName() << " cannot sign " << this->_name << " because his grade is too low." << std::endl;
+		throw Form::GradeTooLowException();
+	}
 }
 
 int Form::getGradeToSign() const

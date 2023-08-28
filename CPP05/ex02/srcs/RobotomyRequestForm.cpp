@@ -6,18 +6,18 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 16:21:17 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/08/25 11:29:22 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/08/25 16:35:34 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/RobotomyRequestForm.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm() : AForm("RobotomyRequestForm", 72, 45), _target("Murillo")
+RobotomyRequestForm::RobotomyRequestForm() : AForm("Robotomy Request", 72, 45), _target("Murillo")
 {
 	std::cout << "RobotomyRequestForm default constructor called" << std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm("RobotomyRequestForm", 72, 45), _target(target)
+RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm("Robotomy Request", 72, 45), _target(target)
 {
 	std::cout << "RobotomyRequestForm constructor called" << std::endl;
 }
@@ -53,12 +53,12 @@ void RobotomyRequestForm::execute(Bureaucrat const & executor) const
 	if (executor.getGrade() > this->getGradeToExecute())
 	{
 		std::cout << "Bureaucrat " << executor.getName() << " cannot execute " << this->getName() << " because his grade is too low." << std::endl;
-		return ;
+		throw AForm::GradeTooLowException();
 	}
 	if (this->isItSigned() == false)
 	{
 		std::cout << "Bureaucrat " << executor.getName() << " cannot execute " << this->getName() << " because the form is not signed." << std::endl;
-		return ;
+		throw AForm::FormNotSignedException();
 	}
 	std::cout << executor.getName() << " executes " << this->getName() << std::endl;
 	std::cout << "Brr brr brrzzzzzzzzz " << std::endl;

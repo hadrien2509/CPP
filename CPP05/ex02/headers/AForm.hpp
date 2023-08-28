@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 16:47:33 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/08/24 19:23:36 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/08/25 16:20:19 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,11 @@ public:
 			virtual const char *what() const throw();
 	};
 	class GradeTooLowException : public std::exception
+	{
+		public:
+			virtual const char *what() const throw();
+	};
+	class FormNotSignedException : public std::exception
 	{
 		public:
 			virtual const char *what() const throw();

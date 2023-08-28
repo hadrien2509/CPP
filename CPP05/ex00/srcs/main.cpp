@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 11:59:03 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/08/23 16:32:47 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/08/25 17:34:57 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	main(void)
 		Bureaucrat	xavier("Xavier", 1);
 		Bureaucrat	archi("Archi", 2);
 
+		std::cout << steve << std::endl;
+		steve.incrementGrade(100);
 		std::cout << steve << std::endl;
 		std::cout << xavier << std::endl;
 		std::cout << archi << std::endl;

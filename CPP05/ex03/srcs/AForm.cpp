@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 18:12:47 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/08/25 10:06:41 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/08/25 16:52:31 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,10 @@ void AForm::beSigned(Bureaucrat &src)
 	else if (this->_signed == 1)
 		std::cout << src.getName() << " cannot sign " << this->_name << " because the form is already signed." << std::endl;
 	else
+	{
 		std::cout << src.getName() << " cannot sign " << this->_name << " because his grade is too low." << std::endl;
+		throw AForm::GradeTooLowException();
+	}
 }
 
 int AForm::getGradeToSign() const
@@ -98,4 +101,9 @@ const char *AForm::GradeTooHighException::what() const throw()
 const char *AForm::GradeTooLowException::what() const throw()
 {
 	return ("Grade to exec or sign of the Form is too low");
+}
+
+const char *AForm::FormNotSignedException::what() const throw()
+{
+	return ("Form is not signed");
 }

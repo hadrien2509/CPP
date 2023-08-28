@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 11:59:14 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/08/24 18:04:58 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/08/25 15:57:42 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,11 @@ class Bureaucrat
 				virtual const char* what() const throw();
 		};
 		class GradeTooLowException : public std::exception
+		{
+			public:
+				virtual const char* what() const throw();
+		};
+		class GradeTooLowToExecuteException : public std::exception
 		{
 			public:
 				virtual const char* what() const throw();
