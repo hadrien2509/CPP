@@ -1,24 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   whatever.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/29 17:43:57 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/08/31 16:42:55 by hgeissle         ###   ########.fr       */
+/*   Created: 2023/08/31 15:46:49 by hgeissle          #+#    #+#             */
+/*   Updated: 2023/08/31 15:53:12 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/ScalarConverter.hpp"
+#ifndef WHATEVER_HPP
+# define WHATEVER_HPP
 
-int	main(int argc, char **argv)
+#include <iostream>
+
+template <typename T>
+
+void swap(T &a, T &b)
 {
-	if (argc != 2)
-	{
-		std::cerr << "Error: Wrong number of arguments" << std::endl;
-		return (1);
-	}
-	ScalarConverter::convert(argv[1]);
-	return (0);
+	T tmp;
+
+	tmp = a;
+	a = b;
+	b = tmp;
 }
+
+template <typename T>
+
+T min(T &a, T &b)
+{
+	if (a < b)
+		return a;
+	else
+		return b;
+}
+
+template <typename T>
+
+T max(T &a, T &b)
+{
+	if (a > b)
+		return a;
+	else
+		return b;
+}
+
+#endif

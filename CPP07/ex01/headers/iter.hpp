@@ -1,24 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   iter.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/29 17:43:57 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/08/31 16:42:55 by hgeissle         ###   ########.fr       */
+/*   Created: 2023/08/31 15:55:53 by hgeissle          #+#    #+#             */
+/*   Updated: 2023/08/31 16:19:21 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/ScalarConverter.hpp"
+#ifndef ITER_HPP
+# define ITER_HPP
 
-int	main(int argc, char **argv)
+#include <iostream>
+
+template <typename T>
+
+void iter(T* array, size_t len, void (*f)(T const &))
 {
-	if (argc != 2)
-	{
-		std::cerr << "Error: Wrong number of arguments" << std::endl;
-		return (1);
-	}
-	ScalarConverter::convert(argv[1]);
-	return (0);
+	for (size_t i = 0; i < len; i++)
+		f(array[i]);
 }
+
+template <typename T>
+
+void print(T const &a)
+{
+	std::cout << a << std::endl;
+}
+
+#endif
