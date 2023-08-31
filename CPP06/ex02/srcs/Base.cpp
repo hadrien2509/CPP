@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 20:10:20 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/08/30 20:54:26 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/08/31 09:07:44 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,26 @@ Base * generate(void)
 
 void identify(Base* p)
 {
-	Base *ptr = static_cast<A *>(p);
+	A *ptr = static_cast<A *>(p);
 	if (ptr == p)
 		std::cout << A << std::endl;
-	ptr = static_cast<B *>
+	ptr = static_cast<B *>(p);
+	if (ptr == p)
+		std::cout << B << std::endl;
+	ptr = static_cast<C *>(p);
+	if (ptr == p)
+		std::cout << C << std::endl;
 }
 
 void identify(Base& p)
 {
-	
+	A *ptr = static_cast<A *>(&p);
+	if (ptr == &p)
+		std::cout << A << std::endl;
+	ptr = static_cast<B *>(&p);
+	if (ptr == &p)
+		std::cout << B << std::endl;
+	ptr = static_cast<C *>(&p);
+	if (ptr == &p)
+		std::cout << C << std::endl;
 }
