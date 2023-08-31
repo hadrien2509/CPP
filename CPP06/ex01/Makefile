@@ -6,11 +6,11 @@
 #    By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/14 18:00:17 by hgeissle          #+#    #+#              #
-#    Updated: 2023/08/30 20:04:00 by hgeissle         ###   ########.fr        #
+#    Updated: 2023/08/31 10:30:30 by hgeissle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ex03
+NAME = ex01
 
 SRCS =	srcs/main.cpp\
 		srcs/Serializer.cpp\

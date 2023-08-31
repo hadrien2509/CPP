@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   B.hpp                                              :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/30 20:14:24 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/08/31 10:53:09 by hgeissle         ###   ########.fr       */
+/*   Created: 2023/08/31 10:41:29 by hgeissle          #+#    #+#             */
+/*   Updated: 2023/08/31 15:03:28 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef B_HPP
-# define B_HPP
+#include "../headers/A.hpp"
+#include "../headers/B.hpp"
+#include "../headers/C.hpp"
+#include <unistd.h>
 
-# include "Base.hpp"
-
-class B : public Base
+int main(void)
 {
-};
+	Base *ptr;
 
-#endif
+	ptr = generate();
+	identify(ptr);
+	identify(*ptr);
+}
