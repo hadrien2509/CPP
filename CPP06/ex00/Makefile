@@ -6,11 +6,11 @@
 #    By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/14 18:00:17 by hgeissle          #+#    #+#              #
-#    Updated: 2023/08/31 10:30:43 by hgeissle         ###   ########.fr        #
+#    Updated: 2023/08/31 15:39:12 by hgeissle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ex00
+NAME = convert
 
 SRCS =	srcs/main.cpp\
 		srcs/ScalarConverter.cpp\

@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 10:41:29 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/08/31 15:03:28 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/08/31 15:43:20 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,5 @@ int main(void)
 	ptr = generate();
 	identify(ptr);
 	identify(*ptr);
+	delete ptr;
 }
