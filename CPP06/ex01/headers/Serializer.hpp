@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 12:48:41 by hadrien           #+#    #+#             */
-/*   Updated: 2023/08/30 21:44:37 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/09/01 18:59:20 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,16 @@
 
 # include <iostream>
 # include <string>
-
-struct Data
-{
-    std::string	s1;
-    int			n;
-};
+# include "Data.hpp"
 
 class Serializer
 {
-    public:
+	private:
         Serializer(void);
         Serializer(Serializer const &src);
         ~Serializer(void);
         Serializer& operator=(Serializer const &rhs);
+    public:
 
         static uintptr_t	serialize(Data *ptr);
         static Data*		deserialize(uintptr_t raw);

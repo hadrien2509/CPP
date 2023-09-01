@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 15:01:56 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/08/31 16:45:18 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/09/01 18:59:45 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,11 @@ enum e_type
 class ScalarConverter
 {
 	private:
+		ScalarConverter();
+		ScalarConverter(ScalarConverter const &src);
+		ScalarConverter &operator=(ScalarConverter const &src);
+		~ScalarConverter();
+
 		static void convertPseudoFloat(std::string str);
 		static void convertPseudoDouble(std::string str);
 		static void convertChar(std::string str);
@@ -44,10 +49,6 @@ class ScalarConverter
 		static e_type	getNumType(std::string str);
 
 	public:
-		ScalarConverter();
-		ScalarConverter(ScalarConverter const &src);
-		ScalarConverter &operator=(ScalarConverter const &src);
-		~ScalarConverter();
 		
 		static e_type	getType(std::string str);
 		static void convert(std::string str);

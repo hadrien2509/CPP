@@ -6,14 +6,13 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 17:27:54 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/08/31 17:52:54 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/09/01 16:04:56 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ARRAY_HPP
 # define ARRAY_HPP
 
-# include <iostream>
 
 template <typename T>
 
@@ -30,8 +29,17 @@ class Array
 		Array& operator=(Array const &src);
 		~Array();
 
-		T	&operator[](unsigned int i) const;
-		int	size() const;
+		class OutOfBoundsException: public std::exception
+		{
+			virtual const char* what() const throw() {
+				return ("Index out of bounds");
+			}
+		};
+
+		T				&operator[](unsigned int i) const;
+		unsigned int	size() const;
 };
+
+#include "../srcs/Array.tpp"
 
 #endif
