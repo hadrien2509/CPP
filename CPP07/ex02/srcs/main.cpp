@@ -17,6 +17,15 @@ int main(int, char**)
     {
         Array<int> tmp = numbers;
         Array<int> test(tmp);
+
+		for (int i = 0; i < MAX_VAL; i++)
+    	{
+        	if (test[i] != numbers[i])
+       		{
+            	std::cerr << "didn't save the same value!!" << std::endl;
+            	return 1;
+        	}
+    	}
     }
 
     for (int i = 0; i < MAX_VAL; i++)
