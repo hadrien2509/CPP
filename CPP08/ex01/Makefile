@@ -6,17 +6,14 @@
 #    By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/14 18:00:17 by hgeissle          #+#    #+#              #
-#    Updated: 2023/09/01 16:09:40 by hgeissle         ###   ########.fr        #
+#    Updated: 2023/09/04 10:58:43 by hgeissle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = ex01
 
 SRCS =	srcs/main.cpp\
-		srcs/A.cpp\
-		srcs/B.cpp\
-		srcs/C.cpp\
-		srcs/Base.cpp\
+		srcs/Span.cpp\
 		
 OBJS		= $(SRCS:.cpp=.o)
 RM			= rm -f
