@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 10:59:09 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/09/04 15:33:43 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/09/04 20:54:14 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <iostream>
 # include <algorithm>
 # include <vector>
+# include <climits>
 
 class Span
 {
