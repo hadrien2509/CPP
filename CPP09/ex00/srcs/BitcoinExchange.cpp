@@ -6,25 +6,23 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 17:26:28 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/09/06 04:19:12 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/09/08 19:45:49 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/BitcoinExchange.hpp"
 
-bool 
-
 bool BitcoinExchange::_isDateFormatValid(std::string date)
 {
 	if (date.size() != 10)
 		return (false);
-	if (data.substr(0, 4).find_first_not_of("0123456789") != std::string::npos)
+	if (date.substr(0, 4).find_first_not_of("0123456789") != std::string::npos)
 		return (false);
-	if (data.substr(5, 2).find_first_not_of("0123456789") != std::string::npos)
+	if (date.substr(5, 2).find_first_not_of("0123456789") != std::string::npos)
 		return (false);
-	if (data.substr(8, 2).find_first_not_of("0123456789") != std::string::npos)
+	if (date.substr(8, 2).find_first_not_of("0123456789") != std::string::npos)
 		return (false);
-	if (data.substr(4, 1) != "-" || data.substr(7, 1) != "-")
+	if (date.substr(4, 1) != "-" || date.substr(7, 1) != "-")
 		return (false);
 
 	return (true);
@@ -32,18 +30,18 @@ bool BitcoinExchange::_isDateFormatValid(std::string date)
 
 bool BitcoinExchange::_isDateValid(std::string date)
 {
-	if (!this->isDateFormatValid(date))
+	if (!this->_isDateFormatValid(date))
 		return (false);
 
-	int year = std::stoi(date.substr(0, 4));
-	int month = std::stoi(date.substr(5, 2));
-	int day = std::stoi(date.substr(8, 2));
+	int year = std::atoi(date.substr(0, 4).c_str());
+	int month = std::atoi(date.substr(5, 2).c_str());
+	int day = std::atoi(date.substr(8, 2).c_str());
 
 	if (day < 1)
 		return (false);
 	switch (month)
 	{
-		case 1: case 3: case 5: case: 7 case 8: case 10: case 12:
+		case 1: case 3: case 5: case 7: case 8: case 10: case 12:
 			if (day > 31)
 				return (false);
 			break;
@@ -55,7 +53,7 @@ bool BitcoinExchange::_isDateValid(std::string date)
 			if ((year % 4 == 0 || year % 100 == 0) && day > 28)
 				return (false);
 			if (day > 29)
-				return (false)
+				return (false);
 			break;
 		default:
 			return (false);
@@ -63,10 +61,19 @@ bool BitcoinExchange::_isDateValid(std::string date)
 	return (true);
 }
 
-bool BitcoinExchange::isRateValid(float rate)
+bool BitcoinExchange::_isRateValid(std::string rate)
 {
-	if (rate < 0)
-		return (false);
+	size_t	dot;
+
+	if (rate.size() == 0)
+		return false;
+	dot = rate.find_first_not_of("0123456789");
+	if (dot == std::string::npos)
+		return true;
+	if (rate[dot] != '.')
+		return false;
+	if (rate.substr(dot + 1, rate.size() - dot).find_first_not_of("0123456789") != std::string::npos)
+		return false;
 	return (true);
 }
 
@@ -74,27 +81,63 @@ void BitcoinExchange::storeDataInMap()
 {
 	std::ifstream	dataFile("data.csv");
 	if (!dataFile.is_open())
-		throw std::runtime_error("Failed to open file");
+		throw std::runtime_error("Failed to open .csv file");
 
 	std::string	line, date, rate;
 	if (getline(dataFile, line))
 	{
-		if (line != "data,exchange_rate")
-			throw std::runtime_error("Incorrect ");
+		if (line != "date,exchange_rate")
+			throw std::runtime_error(".csv file is not well formated");
 	}
+	double rate_nb;
 	while (getline(dataFile, line))
 	{
 		std::stringstream	ss(line);
 
-		if (getline(ss, date, ',') && getline(s, rate))
+		if (getline(ss, date, ',') && getline(ss, rate))
 		{
 			if (!this->_isDateValid(date))
 				throw std::runtime_error(".csv file contains invalid date(s)");
 			if (!this->_isRateValid(rate))
 				throw std::runtime_error(".csv file contains invalid rate value(s)");
-			
+		rate_nb = std::strtod(rate.c_str(), NULL);
+		if (rate_nb < 0)
+			throw std::runtime_error(".csv file contains negative rate value(s)");
+		_database[date] = rate_nb;
+		std::cout << date << " " << rate_nb << std::endl;
 		}
-		
-		this->_database[date] = std::stof(rate);
 	}
+}
+
+void BitcoinExchange::CalculatePrice(const std::string& input)
+{
+	std::ifstream	dataFile(input);
+	if (!dataFile.is_open())
+		throw std::runtime_error("Failed to open input file");
+
+	std::string	line, date, pipe, value;
+	if (getline(dataFile, line))
+	{
+		if (line != "date,exchange_rate")
+			throw std::runtime_error("input file is not well formated");
+	}
+
+	while (getline(dataFile, line))
+	{
+		std::stringstream	ss(line);
+
+		ss >> date;
+		ss >> pipe;
+		ss >> value;
+
+		if (pipe != "|")
+			throw std::runtime_error("input file is not well formated");
+		if (!this->_isDateValid(date))
+			throw std::runtime_error("input file contains invalid date(s)");
+		if (!this->_isRateValid(value))
+			throw std::runtime_error("input file contains invalid rate value(s)");
+	}
+	std::stringstream	ss;
+	
+	
 }
