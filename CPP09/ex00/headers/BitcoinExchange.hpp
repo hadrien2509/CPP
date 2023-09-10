@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 14:10:57 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/09/08 18:25:46 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/09/10 14:14:00 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ class BitcoinExchange
 		bool _isDateValid(std::string date);
 		bool _isDateFormatValid(std::string date);
 		bool _isRateValid(std::string rate);
+
+		double _findClosestDateValue(std::string);
 		
 	public :
 		void storeDataInMap();
