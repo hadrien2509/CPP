@@ -1,38 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RPN.hpp                                            :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/10 16:28:50 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/09/12 19:02:22 by hgeissle         ###   ########.fr       */
+/*   Created: 2023/09/12 18:31:26 by hgeissle          #+#    #+#             */
+/*   Updated: 2023/09/12 19:05:02 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RPN_HPP
-# define RPN_HPP
+#include "../headers/RPN.hpp"
 
-# include <iostream>
-# include <string>
-# include <stack>
-# include <algorithm>
-# include <sstream>
-
-class RPN
+int main(int ac, char **av)
 {
-    private:
+	RPN	test;
 
-		void _selectOperation(std::string);
+	if (ac != 2)
+		throw std::runtime_error("Invalid number of arguments");
 
-	public:
-        RPN();
-        ~RPN();
-        RPN(const RPN &);
-        RPN& operator=(const RPN &);
-
-        std::stack<int> answer;
-		int reversePolishNation(std::string);
-};
-
-#endif
+	test.reversePolishNation(av[1]);
+	std::cout << test.answer.top() << std::endl;
+}

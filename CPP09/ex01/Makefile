@@ -6,14 +6,14 @@
 #    By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/14 18:00:17 by hgeissle          #+#    #+#              #
-#    Updated: 2023/09/10 16:23:52 by hgeissle         ###   ########.fr        #
+#    Updated: 2023/09/12 18:43:33 by hgeissle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = rpn
 
 SRCS =	srcs/main.cpp\
-		srcs/
+		srcs/RPN.cpp\
 		
 OBJS		= $(SRCS:.cpp=.o)
 RM			= rm -f

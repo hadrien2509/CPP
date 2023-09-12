@@ -6,13 +6,55 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 17:26:28 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/09/12 15:38:52 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/09/12 18:17:33 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/BitcoinExchange.hpp"
 
-std::map<std::string, double> BitcoinExchange::_database;
+BitcoinExchange::BitcoinExchange(const std::string & input)
+{
+	std::ifstream	dataFile(input);
+	if (!dataFile.is_open())
+		throw std::runtime_error("Failed to open .csv file");
+
+	std::string	line, date, rate;
+	if (getline(dataFile, line))
+	{
+		if (line != "date,exchange_rate")
+			throw std::runtime_error(".csv file is not well formated");
+	}
+	double rate_nb;
+	while (getline(dataFile, line))
+	{
+		std::stringstream	ss(line);
+
+		if (getline(ss, date, ',') && getline(ss, rate))
+		{
+			if (!BitcoinExchange::_isDateValid(date))
+				throw std::runtime_error(".csv file contains invalid date(s)");
+			if (!BitcoinExchange::_isRateValid(rate))
+				throw std::runtime_error(".csv file contains invalid rate value(s)");
+		rate_nb = std::strtod(rate.c_str(), NULL);
+		if (rate_nb < 0)
+			throw std::runtime_error(".csv file contains negative rate value(s)");
+		this->_database[date] = rate_nb;
+		}
+	}
+}
+
+BitcoinExchange::~BitcoinExchange() {}
+
+BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange & src)
+{
+	this->_database = src._database;
+	return (*this);
+}
+
+BitcoinExchange::BitcoinExchange(const BitcoinExchange & src)
+{
+	(*this) = src;
+}
 
 bool BitcoinExchange::_isDateFormatValid(std::string date)
 {
@@ -26,7 +68,6 @@ bool BitcoinExchange::_isDateFormatValid(std::string date)
 		return (false);
 	if (date.substr(4, 1) != "-" || date.substr(7, 1) != "-")
 		return (false);
-
 	return (true);
 }
 
@@ -79,37 +120,6 @@ bool BitcoinExchange::_isRateValid(std::string rate)
 	return (true);
 }
 
-void BitcoinExchange::storeDataInMap()
-{
-	std::ifstream	dataFile("data.csv");
-	if (!dataFile.is_open())
-		throw std::runtime_error("Failed to open .csv file");
-
-	std::string	line, date, rate;
-	if (getline(dataFile, line))
-	{
-		if (line != "date,exchange_rate")
-			throw std::runtime_error(".csv file is not well formated");
-	}
-	double rate_nb;
-	while (getline(dataFile, line))
-	{
-		std::stringstream	ss(line);
-
-		if (getline(ss, date, ',') && getline(ss, rate))
-		{
-			if (!BitcoinExchange::_isDateValid(date))
-				throw std::runtime_error(".csv file contains invalid date(s)");
-			if (!BitcoinExchange::_isRateValid(rate))
-				throw std::runtime_error(".csv file contains invalid rate value(s)");
-		rate_nb = std::strtod(rate.c_str(), NULL);
-		if (rate_nb < 0)
-			throw std::runtime_error(".csv file contains negative rate value(s)");
-		BitcoinExchange::_database[date] = rate_nb;
-		}
-	}
-}
-
 double BitcoinExchange::_findClosestDateValue(std::string date)
 {
 	std::stringstream ss;
@@ -118,9 +128,9 @@ double BitcoinExchange::_findClosestDateValue(std::string date)
 	int month = std::atoi(date.substr(5, 2).c_str());
 	int day = std::atoi(date.substr(8, 2).c_str());
 
-	if (BitcoinExchange::_database[date])
-		return BitcoinExchange::_database[date];
-	while (!BitcoinExchange::_database[date])
+	if (this->_database[date])
+		return this->_database[date];
+	while (!this->_database[date])
 	{
 		ss.str("");
 		if (day == 0)
@@ -136,7 +146,7 @@ double BitcoinExchange::_findClosestDateValue(std::string date)
 		if (year == 2008)
 		{
 			std::cerr << "Error: no match found for some date(s) in the input file" << std::endl;
-			return (-1);
+			return -1;
 		}
 		if (day < 10 && month < 10)
 		{
@@ -157,7 +167,7 @@ double BitcoinExchange::_findClosestDateValue(std::string date)
 		date = ss.str();
 		day--;
 	}
-	return BitcoinExchange::_database[date];
+	return this->_database[date];
 }
 
 void BitcoinExchange::CalculatePrice(const std::string& input)
@@ -197,7 +207,7 @@ void BitcoinExchange::CalculatePrice(const std::string& input)
 			std::cerr << "Error: too large a number." << std::endl;
 			continue;
 		}
-		res = BitcoinExchange::_findClosestDateValue(date);
+		res = this->_findClosestDateValue(date);
 		if (res == -1)
 			continue;
 		res = res * std::strtod(value.c_str(), NULL);
