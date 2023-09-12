@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 17:26:28 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/09/12 15:29:17 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/09/12 15:38:52 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,9 @@ bool BitcoinExchange::_isDateValid(std::string date)
 				return (false);
 			break;
 		case 2:
-			if ((year % 4 == 0 && year % 100 == 0 && year % 400 != 0) && day > 29)
+			if ((year % 4 != 0 || (year % 100 == 0 || year % 400 != 0)) && day > 28)
 				return (false);
-			if (day > 28)
+			if (day > 29)
 				return (false);
 			break;
 		default:
