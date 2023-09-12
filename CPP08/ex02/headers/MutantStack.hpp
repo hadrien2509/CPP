@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 23:10:45 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/09/05 17:24:52 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/09/06 10:49:07 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <iostream>
 # include <stack>
 # include <list>
+# include <algorithm>
 
 template <typename T>
 

@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 10:58:54 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/09/05 16:30:22 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/09/06 10:57:21 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ Span &Span::operator=(Span const &src)
 	if (this != &src)
 	{
 		this->_N = src._N;
-		std::copy(src._array.begin(), src._array.end(), this->_array.begin());		
+		this->_array = src._array;
 	}
 	return (*this);
 }
@@ -45,7 +45,7 @@ void	Span::addNumbers(std::vector<int>::iterator begin, std::vector<int>::iterat
 	this->_array.insert(this->_array.end(), begin, end);
 }
 
-unsigned int Span::shortestSpan()
+unsigned int Span::shortestSpan() const
 {
 	std::vector<int> sorted;
 	
@@ -71,19 +71,35 @@ unsigned int Span::longestSpan()
 	return (*max - *min);
 }
 
-void Span::printArray()
+const std::vector<int>& Span::getNumbers() const
 {
-	std::vector<int>::iterator it = this->_array.begin();
-	std::vector<int>::iterator ite = this->_array.end();
+	return (this->_array);
+}
 
-	std::cout << "Array: ";
+/* ************************************************************************** */
+/*                             Operators Overloads                            */
+/* ************************************************************************** */
+
+std::ostream &operator<<(std::ostream &out, Span const &src)
+{
+	std::vector<int> v = src.getNumbers();
+	
+	std::vector<int>::iterator it = v.begin();
+	std::vector<int>::iterator ite = v.end();
+
+	std::cout << "Numbers: { ";
 	while (it != ite)
 	{
-		std::cout << *it << " ";
+		out << *it << " ";
 		++it;
 	}
-	std::cout << std::endl;
+	std::cout << "}";
+    return (out);
 }
+
+/* ************************************************************************** */
+/*                            Exceptions handling                             */
+/* ************************************************************************** */
 
 const char* Span::FullArrayException::what() const throw()
 {

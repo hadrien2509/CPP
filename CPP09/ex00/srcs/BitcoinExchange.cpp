@@ -6,11 +6,13 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 17:26:28 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/09/10 14:18:31 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/09/12 15:15:37 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/BitcoinExchange.hpp"
+
+std::map<std::string, float> BitcoinExchange::_database;
 
 bool BitcoinExchange::_isDateFormatValid(std::string date)
 {
@@ -30,7 +32,7 @@ bool BitcoinExchange::_isDateFormatValid(std::string date)
 
 bool BitcoinExchange::_isDateValid(std::string date)
 {
-	if (!this->_isDateFormatValid(date))
+	if (!BitcoinExchange::_isDateFormatValid(date))
 		return (false);
 
 	int year = std::atoi(date.substr(0, 4).c_str());
@@ -50,7 +52,7 @@ bool BitcoinExchange::_isDateValid(std::string date)
 				return (false);
 			break;
 		case 2:
-			if ((year % 4 == 0 || year % 100 == 0) && day > 28)
+			if ((year % 4 == 0 && year % 100 == 0 && year % 400 != 0) && day > 28)
 				return (false);
 			if (day > 29)
 				return (false);
@@ -96,29 +98,31 @@ void BitcoinExchange::storeDataInMap()
 
 		if (getline(ss, date, ',') && getline(ss, rate))
 		{
-			if (!this->_isDateValid(date))
+			if (!BitcoinExchange::_isDateValid(date))
 				throw std::runtime_error(".csv file contains invalid date(s)");
-			if (!this->_isRateValid(rate))
+			if (!BitcoinExchange::_isRateValid(rate))
 				throw std::runtime_error(".csv file contains invalid rate value(s)");
 		rate_nb = std::strtod(rate.c_str(), NULL);
 		if (rate_nb < 0)
 			throw std::runtime_error(".csv file contains negative rate value(s)");
-		_database[date] = rate_nb;
-		std::cout << date << " " << rate_nb << std::endl;
+		BitcoinExchange::_database[date] = rate_nb;
 		}
 	}
 }
 
 double BitcoinExchange::_findClosestDateValue(std::string date)
 {
+	std::stringstream ss;
+	
 	int year = std::atoi(date.substr(0, 4).c_str());
 	int month = std::atoi(date.substr(5, 2).c_str());
 	int day = std::atoi(date.substr(8, 2).c_str());
 
-	if (this->_database[date])
-		return this->_database[date];
-	while (!this->_database[date])
+	if (BitcoinExchange::_database[date])
+		return BitcoinExchange::_database[date];
+	while (!BitcoinExchange::_database[date])
 	{
+		ss.str("");
 		if (day == 0)
 		{
 			day = 31;
@@ -130,49 +134,73 @@ double BitcoinExchange::_findClosestDateValue(std::string date)
 			year--;
 		}
 		if (year == 2008)
-			throw std::runtime_error("no match found for some date(s) in the input file");
+		{
+			std::cerr << "Error: no match found for some date(s) in the input file" << std::endl;
+			return (-1);
+		}
 		if (day < 10 && month < 10)
-			date = std::itoa(year) + "-0" + std::itoa(month) + "-0" + std::itoa(day);
+		{
+			ss << year << "-0" << month << "-0" << day;
+		}
 		else if (day < 10 && month >= 10)
-			date = std::itoa(year) + "-" + std::itoa(month) + "-0" + std::itoa(day);
+		{
+			ss << year << "-" << month << "-0" << day;
+		}
 		else if (day >= 10 && month < 10)
-			date = std::itoa(year) + "-0" + std::itoa(month) + "-0" + std::itoa(day);
+		{
+			ss << year << "-0" << month << "-" << day;
+		}
 		else if (day >= 10 && month >= 10)
-			date = std::itoa(year) + "-0" + std::itoa(month) + "-0" + std::itoa(day);
-
-		std::cout << "date string :" << date << std::endl;
+		{
+			ss << year << "-" << month << "-" << day;
+		}
+		date = ss.str();
+		day--;
 	}
-	return this->_database[date];
+	return BitcoinExchange::_database[date];
 }
 
 void BitcoinExchange::CalculatePrice(const std::string& input)
 {
 	std::ifstream	dataFile(input);
 	if (!dataFile.is_open())
-		throw std::runtime_error("Failed to open input file");
+		std::cerr << "Error : could open input file" << std::endl;
 
 	std::string	line, date, pipe, value;
 	if (getline(dataFile, line))
 	{
-		if (line != "date,exchange_rate")
-			throw std::runtime_error("input file is not well formated");
+		if (line != "date | value")
+			std::cerr << "Error: file is not well formated" << std::endl;
 	}
 	double res;
 	while (getline(dataFile, line))
 	{
 		std::stringstream	ss(line);
-
-		ss >> date;
-		ss >> pipe;
-		ss >> value;
-
-		if (pipe != "|")
-			throw std::runtime_error("input file is not well formated");
-		if (!this->_isDateValid(date))
-			throw std::runtime_error("input file contains invalid date(s)");
-		if (!this->_isRateValid(value))
-			throw std::runtime_error("input file contains invalid rate value(s)");
-		res = this->_findClosestDateValue(date);
-		res = res * value;
+			
+		if (!(ss >> date) || !BitcoinExchange::_isDateValid(date))
+		{
+			std::cerr << "Error: bad input => " << date << std::endl;
+			continue;
+		}
+		if (!(ss >> pipe) || pipe != "|")
+		{
+			std::cerr << "Error: file is not well formated" << std::endl;
+			continue;
+		}
+		if (!(ss >> value) || !BitcoinExchange::_isRateValid(value))
+		{
+			std::cerr << "Error: not a positive number." << std::endl;
+			continue;
+		}
+		if (strtod(value.c_str(), NULL) > 1000)
+		{
+			std::cerr << "Error: too large a number." << std::endl;
+			continue;
+		}
+		res = BitcoinExchange::_findClosestDateValue(date);
+		if (res == -1)
+			continue;
+		res = res * std::strtod(value.c_str(), NULL);
+		std::cout << date << " => " << value << " = " << res << std::endl;
 	}
 }

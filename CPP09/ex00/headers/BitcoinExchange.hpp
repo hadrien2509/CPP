@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 14:10:57 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/09/10 14:14:00 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/09/12 11:43:57 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,22 @@
 class BitcoinExchange
 {
 	private :
-		std::map<std::string, float> _database;
+		BitcoinExchange();
+		BitcoinExchange(const BitcoinExchange &src);
+		BitcoinExchange &operator=(const BitcoinExchange &src);
+		~BitcoinExchange();
 
-		bool _isDateValid(std::string date);
-		bool _isDateFormatValid(std::string date);
-		bool _isRateValid(std::string rate);
+		static std::map<std::string, float> _database;
 
-		double _findClosestDateValue(std::string);
+		static bool _isDateValid(std::string date);
+		static bool _isDateFormatValid(std::string date);
+		static bool _isRateValid(std::string rate);
+
+		static double _findClosestDateValue(std::string);
 		
 	public :
-		void storeDataInMap();
+		static void storeDataInMap();
+		static void CalculatePrice(const std::string &);
 };
 
 #endif

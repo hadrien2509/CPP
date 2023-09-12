@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 16:59:53 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/09/05 15:32:12 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/09/06 10:49:30 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <deque>
 # include <list>
 # include <vector>
+# include <algorithm>
 
 class NotFoundException : public std::exception
 {

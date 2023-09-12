@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 15:33:16 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/09/05 16:00:40 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/09/06 11:19:25 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ int main()
 	sp.addNumber(17);
 	sp.addNumber(9);
 	sp.addNumber(11);
-	sp.printArray();
+
+	std::cout << sp << std::endl;
 
 	std::cout << sp.shortestSpan() << std::endl;
 	std::cout << sp.longestSpan() << std::endl;
@@ -33,7 +34,7 @@ int main()
 	}
 	std::cout << std::endl;
 	try {
-	Span sp = Span(5);
+	Span sp = Span(3);
 	std::vector<int> numbersToAdd;
 	
 	numbersToAdd.push_back(0);
@@ -41,12 +42,24 @@ int main()
 	numbersToAdd.push_back(INT_MIN);
 
 	sp.addNumbers(numbersToAdd.begin(), numbersToAdd.end());
-	sp.printArray();
+	
+	std::cout << sp << std::endl;
 
-	std::cout << sp.shortestSpan() << std::endl;
-	std::cout << sp.longestSpan() << std::endl;
+	std::cout << "Shortest span = " << sp.shortestSpan() << std::endl;
+	std::cout << "Longest span = " << sp.longestSpan() << std::endl;
 
 	std::cout << "UINT_MAX = " << UINT_MAX << std::endl;
+
+	Span spcopy(sp);
+
+	std::cout << spcopy << std::endl;
+
+	spcopy.addNumber(2);
+	spcopy.addNumber(3);
+
+	std::cout << spcopy << std::endl;
+	spcopy = sp;
+	std::cout << spcopy << std::endl;
 	}
 	catch (std::exception &e)
 	{

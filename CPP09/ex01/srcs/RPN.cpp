@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 16:47:02 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/09/12 10:08:14 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/09/12 11:17:18 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,5 @@ int main(int ac, char **av)
         {
             RPN::_numbers.push(arg);
         }
+	}
 }

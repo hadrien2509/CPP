@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 10:59:09 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/09/05 16:27:55 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/09/06 10:32:08 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ class Span
 		~Span();
 		
 		void				addNumber(int n);
-		unsigned int		shortestSpan();
+		unsigned int		shortestSpan() const;
 		unsigned int		longestSpan();
 		void				addNumbers(std::vector<int>::iterator begin, std::vector<int>::iterator end);
-		void 				printArray();
+		const std::vector<int>& getNumbers() const;
 
 		class	FullArrayException : public std::exception
 		{
@@ -48,5 +48,7 @@ class Span
 				virtual const char* what() const throw();
 		};
 };
+
+std::ostream &operator<<(std::ostream &out, Span const &value);
 
 #endif
