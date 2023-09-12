@@ -6,16 +6,26 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 16:47:02 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/09/12 19:29:34 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/09/12 19:34:58 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/RPN.hpp"
 
 RPN::RPN() {}
+
 RPN::~RPN() {}
-RPN::RPN(const RPN &) {}
-RPN& RPN::operator=(const RPN &) {return (*this);}
+
+RPN::RPN(const RPN & src)
+{
+	(*this) = src;
+}
+
+RPN& RPN::operator=(const RPN &src)
+{
+	this->answer = src.answer;
+	return (*this);
+}
 
 void RPN::_selectOperation(std::string arg)
 {
@@ -46,6 +56,7 @@ void RPN::_selectOperation(std::string arg)
 				this->answer.push(nb2 / nb1);
 			break;
 		default:
+			std::cerr << "Error" << std::endl;
 			break;
 	}
 }
@@ -77,7 +88,6 @@ int RPN::reversePolishNation(std::string input)
 			else
 				std::cerr << "Error" << std::endl;
 		}
-		// std::cout << this->answer.top() << std::endl;
 	}
 	return 0;
 }
