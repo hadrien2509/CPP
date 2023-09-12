@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 16:47:02 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/09/12 19:34:58 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/09/12 20:05:49 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void RPN::_selectOperation(std::string arg)
 			break;
 		default:
 			std::cerr << "Error" << std::endl;
+			exit (1);
 			break;
 	}
 }
@@ -70,23 +71,17 @@ int RPN::reversePolishNation(std::string input)
 		if (arg.size() != 1)
 		{
 			std::cerr << "Error" << std::endl;
-			return 1;
+			exit (1);
 		}
 		if (!isdigit(arg[0]))
 		{
 			if (this->answer.size() == 2)
-			{
 				this->_selectOperation(arg);
-			}
-			else
-				std::cerr << "Error" << std::endl;
 		}
 		else
 		{
 			if (this->answer.size() < 2)
 				this->answer.push(std::atoi(arg.c_str()));
-			else
-				std::cerr << "Error" << std::endl;
 		}
 	}
 	return 0;
