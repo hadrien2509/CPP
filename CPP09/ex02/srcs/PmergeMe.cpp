@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 19:49:01 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/09/14 17:03:07 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/09/14 20:57:44 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,14 @@ PmergeMe::~PmergeMe() {}
 
 void PmergeMe::_mergeVector()
 {
-	std::vector<std::pair<int, int>>	pairs;
-
 	for (int i = 0; i < this->_vector.size(); i++)		// Creating pairs
 	{
 		if (i % 2)
 		{
 			if (this->_vector[i - 1] <= this->_vector[i])
-				pairs.push_back(std::make_pair(this->_vector[i - 1], this->_vector[i]));
+				this->_pairs.push_back(std::make_pair(this->_vector[i - 1], this->_vector[i]));
 			if (this->_vector[i - 1] > this->_vector[i])
-				pairs.push_back(std::make_pair(this->_vector[i], this->_vector[i]));
+				this->_pairs.push_back(std::make_pair(this->_vector[i], this->_vector[i]));
 		}
 		else if (i == this->_vector.size() - 1)
 		{
@@ -59,67 +57,64 @@ void PmergeMe::_mergeVector()
 		}
 	}
 
-	std::sort(pairs.begin(), pairs.end());			// Sorting pairs relative to lowest value of each pair
+	std::sort(this->_pairs.begin(), this->_pairs.end());			// Sorting pairs relative to lowest value of each pair
 	this->_vector.clear();							// Clear vector
-    for (int i = 0; i < pairs.size(); i++)			// Put lowest value of each pair in vector
+    for (int i = 0; i < this->_pairs.size(); i++)			// Put lowest value of each pair in vector
 	{
-		this->_vector[i] = pairs[i].first;
-		if (i == pairs.size() - 1)
-			this->_vector[i] = pairs[i].second;
+		this->_vector[i] = this->_pairs[i].first;
+		if (i == this->_pairs.size() - 1)
+			this->_vector[i] = this->_pairs[i].second;		// Put pair of highest value of vector at the end of the vector
     }
 }
 
-void PmergeMe::_binarySearchInsertion()
+void PmergeMe::_binarySearchInsertion(std::vector<int>::iterator begin, std::vector<int>::iterator end, int insert)
 {
-	std::vector<int>::iterator begin = numbers.begin();
-    std::vector<int>::iterator end = numbers.end();
+	std::vector<int>::iterator middle = begin + std::distance(begin, end) / 2;
+	if (std::distance(begin, end) == 1 || insert == *middle)
+	{
+		this->_vector.insert(middle, insert);
+		return ;
+	}
+	if (insert < *middle)
+	{
+		_binarySearchInsertion(begin, middle, insert);
+	}
+	else
+	{
+		_binarySearchInsertion(middle, end, insert);
+	}
+}
 
-    // Calculate the middle iterator
-    std::vector<int>::iterator middle = begin;
-    std::advance(middle, std::distance(begin, end) / 2);
-
-    // Create two separate ranges
-    std::vector<int> firstHalf(begin, middle);
-    std::vector<int> secondHalf(middle, end);
+int PmergeMe::_jacobsthal(int n)
+{
+    if (n == 0)
+        return 0;
+	else if (n == 1)
+        return 1;
+    else
+		return _jacobsthal(n - 1) + 2 * _jacobsthal(n - 2);
 }
 
 void PmergeMe::_insertVector()
 {
-	for 
+	int		k = 0;
+
+	for (int i = 2; i < 2 + this->_pairs.size(); i++)
+	{
+		if (i - 2 < k) 
+			_binarySearchInsertion(this->_vector.begin() + i - 2, this->_vector.end(), this->_pairs[i - 2].second);
+		else
+		{
+			k = _jacobsthal(i);
+			_binarySearchInsertion(this->_vector.begin() + k - 1, this->_vector.end(), this->_pairs[k - 1].second);
+		}
+	}
+	if (this->_alone)
+		_binarySearchInsertion(this->_vector.begin(), this->_vector.end(), this->_alone);
 }
 
 void PmergeMe::_sortVector()
 {
 	this->_mergeVector();
 	this->_insertVector();
-}
-
-void PmergeMe::_sortVector()
-{
-	int	half_size = this->_vector.size() / 2;
-	
-	int *left_subarray = new int[half_size];
-    int *right_subarray = new int[half_size];
-
-	for (int i = 0; i < half_size; i++)
-		left_subarray[i] = this->_vector[i];
-
-	for (int j = 0; j < half_size; j++)
-		right_subarray[j] = this->_vector[half_size + j];
-
-	this->_vector.clear();
-	int	index_max = 0;
-	for (int i = 0; i < half_size; i++)
-	{
-		if (left_subarray[i] <= right_subarray[i])
-		{
-			this->_vector.push_back(left_subarray[i]);
-		}
-		else
-		{
-			this->_vector.push_back(right_subarray[i]);
-		}
-	}
-	std::sort(this->_vector.begin(), this->_vector.end());
-	this->_vector.push_back();
 }

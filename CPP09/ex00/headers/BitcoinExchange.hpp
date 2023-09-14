@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 14:10:57 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/09/12 18:00:08 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/09/14 18:38:09 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ class BitcoinExchange
 		BitcoinExchange &operator=(const BitcoinExchange &src);
 		~BitcoinExchange();
 
-		void CalculatePrice(const std::string &);
+		int CalculatePrice(const std::string &);
 };
 
 #endif

@@ -6,11 +6,15 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 17:26:28 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/09/12 18:17:33 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/09/14 18:55:03 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/BitcoinExchange.hpp"
+
+/* ************************************************************************** */
+/*                               Canonical form                               */
+/* ************************************************************************** */
 
 BitcoinExchange::BitcoinExchange(const std::string & input)
 {
@@ -56,6 +60,10 @@ BitcoinExchange::BitcoinExchange(const BitcoinExchange & src)
 	(*this) = src;
 }
 
+/* ************************************************************************** */
+/*                          Private Member functions                          */
+/* ************************************************************************** */
+
 bool BitcoinExchange::_isDateFormatValid(std::string date)
 {
 	if (date.size() != 10)
@@ -80,7 +88,7 @@ bool BitcoinExchange::_isDateValid(std::string date)
 	int month = std::atoi(date.substr(5, 2).c_str());
 	int day = std::atoi(date.substr(8, 2).c_str());
 
-	if (day < 1 || year < 2009)
+	if (day < 1 || year < 2009 || year > 2100)
 		return (false);
 	switch (month)
 	{
@@ -93,7 +101,7 @@ bool BitcoinExchange::_isDateValid(std::string date)
 				return (false);
 			break;
 		case 2:
-			if ((year % 4 != 0 || (year % 100 == 0 || year % 400 != 0)) && day > 28)
+			if ((year % 4 != 0 || (year % 100 == 0 && year % 400 != 0)) && day > 28)
 				return (false);
 			if (day > 29)
 				return (false);
@@ -170,17 +178,31 @@ double BitcoinExchange::_findClosestDateValue(std::string date)
 	return this->_database[date];
 }
 
-void BitcoinExchange::CalculatePrice(const std::string& input)
+/* ************************************************************************** */
+/*                          Public Member functions                           */
+/* ************************************************************************** */
+
+int BitcoinExchange::CalculatePrice(const std::string& input)
 {
 	std::ifstream	dataFile(input);
 	if (!dataFile.is_open())
+	{
 		std::cerr << "Error : could open input file" << std::endl;
-
+		return 1;
+	}
 	std::string	line, date, pipe, value;
 	if (getline(dataFile, line))
 	{
 		if (line != "date | value")
+		{
 			std::cerr << "Error: file is not well formated" << std::endl;
+			return 1;
+		}
+	}
+	else
+	{
+		std::cerr << "Error: file is empty" << std::endl;
+		return 1;
 	}
 	double res;
 	while (getline(dataFile, line))
@@ -213,4 +235,5 @@ void BitcoinExchange::CalculatePrice(const std::string& input)
 		res = res * std::strtod(value.c_str(), NULL);
 		std::cout << date << " => " << value << " = " << res << std::endl;
 	}
+	return 0;
 }
