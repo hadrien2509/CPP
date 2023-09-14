@@ -6,11 +6,15 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 16:47:02 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/09/12 20:05:49 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/09/14 13:58:01 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/RPN.hpp"
+
+/* ************************************************************************** */
+/*                               Canonical form                               */
+/* ************************************************************************** */
 
 RPN::RPN() {}
 
@@ -25,6 +29,16 @@ RPN& RPN::operator=(const RPN &src)
 {
 	this->answer = src.answer;
 	return (*this);
+}
+
+/* ************************************************************************** */
+/*                          Private Member functions                          */
+/* ************************************************************************** */
+
+void	RPN::_error()
+{
+	std::cerr << "Error" << std::endl;
+	exit(1);
 }
 
 void RPN::_selectOperation(std::string arg)
@@ -56,33 +70,33 @@ void RPN::_selectOperation(std::string arg)
 				this->answer.push(nb2 / nb1);
 			break;
 		default:
-			std::cerr << "Error" << std::endl;
-			exit (1);
+			RPN::_error();
 			break;
 	}
 }
 
-int RPN::reversePolishNation(std::string input)
+/* ************************************************************************** */
+/*                          Public Member functions                           */
+/* ************************************************************************** */
+
+void RPN::reversePolishNation(std::string input)
 {
 	std::string arg;
 	std::stringstream ss(input);
 	while (ss >> arg)
 	{
 		if (arg.size() != 1)
-		{
-			std::cerr << "Error" << std::endl;
-			exit (1);
-		}
+			RPN::_error();
 		if (!isdigit(arg[0]))
 		{
-			if (this->answer.size() == 2)
+			if (this->answer.size() >= 2)
 				this->_selectOperation(arg);
+			else
+				RPN::_error();
 		}
 		else
-		{
-			if (this->answer.size() < 2)
-				this->answer.push(std::atoi(arg.c_str()));
-		}
+			this->answer.push(std::atoi(arg.c_str()));
 	}
-	return 0;
+	if (this->answer.size() != 1)
+		RPN::_error();
 }

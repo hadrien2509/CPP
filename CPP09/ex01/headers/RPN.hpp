@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 16:28:50 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/09/12 19:02:22 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/09/14 13:47:31 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ class RPN
     private:
 
 		void _selectOperation(std::string);
+		static void _error();
 
 	public:
         RPN();
@@ -32,7 +33,7 @@ class RPN
         RPN& operator=(const RPN &);
 
         std::stack<int> answer;
-		int reversePolishNation(std::string);
+		void reversePolishNation(std::string);
 };
 
 #endif

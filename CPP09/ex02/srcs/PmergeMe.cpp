@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 19:49:01 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/09/13 17:24:36 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/09/14 17:03:07 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ std::ostream &operator<<(std::ostream& out, PmergeMe const & value)
 	return out;
 }
 
-PmergeMe::PmergeMe(int ac, char **av)
+PmergeMe::PmergeMe(int ac, char **av) : _alone(0)
 {
 	if (ac < 2)
 		throw std::runtime_error("Error");
@@ -39,6 +39,60 @@ PmergeMe::PmergeMe(int ac, char **av)
 }
 
 PmergeMe::~PmergeMe() {}
+
+void PmergeMe::_mergeVector()
+{
+	std::vector<std::pair<int, int>>	pairs;
+
+	for (int i = 0; i < this->_vector.size(); i++)		// Creating pairs
+	{
+		if (i % 2)
+		{
+			if (this->_vector[i - 1] <= this->_vector[i])
+				pairs.push_back(std::make_pair(this->_vector[i - 1], this->_vector[i]));
+			if (this->_vector[i - 1] > this->_vector[i])
+				pairs.push_back(std::make_pair(this->_vector[i], this->_vector[i]));
+		}
+		else if (i == this->_vector.size() - 1)
+		{
+			this->_alone = this->_vector[i];
+		}
+	}
+
+	std::sort(pairs.begin(), pairs.end());			// Sorting pairs relative to lowest value of each pair
+	this->_vector.clear();							// Clear vector
+    for (int i = 0; i < pairs.size(); i++)			// Put lowest value of each pair in vector
+	{
+		this->_vector[i] = pairs[i].first;
+		if (i == pairs.size() - 1)
+			this->_vector[i] = pairs[i].second;
+    }
+}
+
+void PmergeMe::_binarySearchInsertion()
+{
+	std::vector<int>::iterator begin = numbers.begin();
+    std::vector<int>::iterator end = numbers.end();
+
+    // Calculate the middle iterator
+    std::vector<int>::iterator middle = begin;
+    std::advance(middle, std::distance(begin, end) / 2);
+
+    // Create two separate ranges
+    std::vector<int> firstHalf(begin, middle);
+    std::vector<int> secondHalf(middle, end);
+}
+
+void PmergeMe::_insertVector()
+{
+	for 
+}
+
+void PmergeMe::_sortVector()
+{
+	this->_mergeVector();
+	this->_insertVector();
+}
 
 void PmergeMe::_sortVector()
 {

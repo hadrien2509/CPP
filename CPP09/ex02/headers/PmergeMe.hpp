@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 11:54:15 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/09/13 15:10:43 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/09/14 16:55:53 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,11 @@ class PmergeMe
 		std::vector<int>	_vector;
 		double 				_timeDeque;
 		double				_timeVector;
+		int					_alone = 0;
+		
 
+		void _mergeVector();
+		void _insertVector();
 		void _sortDeque();
 		void _sortVector();
 		
