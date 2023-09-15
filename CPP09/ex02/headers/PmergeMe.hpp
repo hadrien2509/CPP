@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 11:54:15 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/09/14 19:34:40 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/09/15 17:04:33 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,21 @@ class PmergeMe
 		std::vector<int>					_vector;
 		double 								_timeDeque;
 		double								_timeVector;
-		int									_alone = 0;
-		std::vector<std::pair<int, int>>	_pairs;
+		int									_alone;
+		std::vector<std::pair<int, int> >	_pairs;
+		size_t								_pairs_size;
 
 		void 		_mergeVector();
+		void 		_mergeDeque();
 		void 		_insertVector();
+		void 		_insertDeque();
 		static int	_jacobsthal(int n);
 		void		_binarySearchInsertion(std::vector<int>::iterator, std::vector<int>::iterator, int);
+		void		_binarySearchInsertion(std::deque<int>::iterator, std::deque<int>::iterator, int);
 		void 		_sortDeque();
 		void 		_sortVector();
+		void 		_printSequence(const std::string &);
+		void 		_printSequenced(const std::string &);
 		
 	public:
 		PmergeMe(int ac, char **av);
@@ -47,7 +53,5 @@ class PmergeMe
 		const double & getTimeVector();
 		void sort();
 };
-
-std::ostream &operator<<(std::ostream &out, PmergeMe const &value);
 
 #endif
