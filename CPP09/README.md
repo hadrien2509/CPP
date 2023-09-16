@@ -1,4 +1,4 @@
-| i (loop iterator) | n (jacobsthal number index) | j (jacobsthal number) | k (Actual sequence) |
+| iterator | n (jacobsthal number index) | j (jacobsthal number) | k (Actual sequence) |
 |-------------------|-----------------------------|-----------------------|----------------------|
 | 0                 | 2                           | 1                     | `1`                  |
 | 1                 | 3                           | 3                     | `3`                  |
