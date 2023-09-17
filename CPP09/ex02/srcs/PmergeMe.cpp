@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 19:49:01 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/09/15 19:12:55 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/09/18 01:29:21 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,12 @@ void PmergeMe::_mergeDeque()
 		}
 	}
 	std::sort(this->_pairs.begin(), this->_pairs.end());		// Sorting pairs relative to lowest value of each pair
-	this->_pairs_size = this->_pairs.size();
 	this->_deque.clear();										// Clear deque
-    for (size_t i = 0; i < this->_pairs_size; i++)				// Put lowest value of each pair in deque
+    for (size_t i = 0; i < this->_pairs.size(); i++)				// Put lowest value of each pair in deque
 	{
 		this->_deque.push_back(this->_pairs[i].first);
+		if (i == this->_pairs.size() - 1)
+			this->_deque.push_back(this->_pairs[i].second);
     }
 }
 
@@ -74,11 +75,12 @@ void PmergeMe::_mergeVector()
 		}
 	}
 	std::sort(this->_pairs.begin(), this->_pairs.end());		// Sorting pairs relative to lowest value of each pair
-	this->_pairs_size = this->_pairs.size();
 	this->_vector.clear();										// Clear vector
-    for (size_t i = 0; i < this->_pairs_size; i++)				// Put lowest value of each pair in vector
+    for (size_t i = 0; i < this->_pairs.size(); i++)				// Put lowest value of each pair in vector
 	{
 		this->_vector.push_back(this->_pairs[i].first);
+		if (i == this->_pairs.size() - 1)
+			this->_vector.push_back(this->_pairs[i].second);
     }
 }
 
@@ -87,7 +89,7 @@ void PmergeMe::_binarySearchInsertion(std::vector<int>::iterator begin, std::vec
 	std::vector<int>::iterator middle = begin + std::distance(begin, end) / 2;
 	if (std::distance(begin, end) == 1 || insert == *middle)
 	{
-		if (insert < *middle)
+		if (insert <= *middle)
 			this->_vector.insert(middle, insert);
 		else
 			this->_vector.insert(end, insert);
@@ -106,9 +108,10 @@ void PmergeMe::_binarySearchInsertion(std::vector<int>::iterator begin, std::vec
 void PmergeMe::_binarySearchInsertion(std::deque<int>::iterator begin, std::deque<int>::iterator end, int insert)
 {
 	std::deque<int>::iterator middle = begin + std::distance(begin, end) / 2;
+	std::cout << insert << "?" << *middle << std::endl;
 	if (std::distance(begin, end) == 1 || insert == *middle)
 	{
-		if (insert < *middle)
+		if (insert <= *middle)
 			this->_deque.insert(middle, insert);
 		else
 			this->_deque.insert(end, insert);
@@ -124,7 +127,7 @@ void PmergeMe::_binarySearchInsertion(std::deque<int>::iterator begin, std::dequ
 	}
 }
 
-int PmergeMe::_jacobsthal(int n)
+size_t PmergeMe::_jacobsthal(size_t n)
 {
     if (n == 0)
         return 0;
@@ -136,18 +139,23 @@ int PmergeMe::_jacobsthal(int n)
 
 void PmergeMe::_insertVector()
 {
-	size_t		k = 0;
+	size_t		k = 1;
+	size_t		j = 1;
+	size_t		n = 2;
 
-	for (size_t i = 2; i < 2 + this->_pairs_size; i++)
+	for (size_t i = 1; i < this->_pairs.size(); i++)
 	{
-		if (i - 2 < k)
-			_binarySearchInsertion(this->_vector.begin() + this->_pairs_size - i + 1, this->_vector.end(), this->_pairs[this->_pairs_size - i + 2].second);
-		else
+		if (i == j)
 		{
-			k = _jacobsthal(i);
-			if (k <= this->_pairs_size)
-				_binarySearchInsertion(this->_vector.begin() + this->_pairs_size - k, this->_vector.end(), this->_pairs[this->_pairs_size - k].second);
+			n++;
+			j = _jacobsthal(n);
+			if (j > this->_pairs.size())
+				k = this->_pairs.size();
+			else
+				k = j;
 		}
+		_binarySearchInsertion(this->_vector.begin() + this->_vector.size() - j, this->_vector.end(), this->_pairs[this->_pairs.size() - k].second);
+		k--;
 	}
 	if (this->_alone)
 		_binarySearchInsertion(this->_vector.begin(), this->_vector.end(), this->_alone);
@@ -155,18 +163,26 @@ void PmergeMe::_insertVector()
 
 void PmergeMe::_insertDeque()
 {
-	size_t		k = 0;
+	size_t		k = 1;
+	size_t		j = 1;
+	size_t		n = 2;
 
-	for (size_t i = 2; i < 2 + this->_pairs_size; i++)
+	_printSequenced("during");
+	for (size_t i = 1; i < this->_pairs.size(); i++)
 	{
-		if (i - 2 < k)
-			_binarySearchInsertion(this->_deque.begin() + this->_pairs_size - i + 1, this->_deque.end(), this->_pairs[this->_pairs_size - i + 2].second);
-		else
+		if (i == j)
 		{
-			k = _jacobsthal(i);
-			if (k <= this->_pairs_size)
-				_binarySearchInsertion(this->_deque.begin() + this->_pairs_size - k, this->_deque.end(), this->_pairs[this->_pairs_size - k].second);
+			n++;
+			j = _jacobsthal(n);
+			if (j > this->_pairs.size())
+				k = this->_pairs.size();
+			else
+				k = j;
 		}
+		// std::cout << this->_pairs[this->_pairs.size() - k].second << " " << this->_deque.size() - j + 1 << " " << j << std::endl;
+		_binarySearchInsertion(this->_deque.begin() + this->_deque.size() - j, this->_deque.end(), this->_pairs[this->_pairs.size() - k].second);
+		_printSequenced("during");
+		k--;
 	}
 	if (this->_alone)
 		_binarySearchInsertion(this->_deque.begin(), this->_deque.end(), this->_alone);
