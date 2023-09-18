@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 11:54:15 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/09/18 00:29:26 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/09/18 15:57:44 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@ class PmergeMe
 		double								_timeVector;
 		int									_alone;
 		std::vector<std::pair<int, int> >	_pairs;
-		size_t								_vectorSize;
-		size_t								_dequeSize;
 
 		void 			_mergeVector();
 		void 			_mergeDeque();
