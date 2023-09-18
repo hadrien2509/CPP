@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 11:54:15 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/09/18 15:57:44 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/09/18 16:16:10 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ class PmergeMe
 		PmergeMe& operator=(const PmergeMe &);
 		~PmergeMe();
 
-		const double & getTimeDeque();
-		const double & getTimeVector();
+		const double & getTimeDeque() const;
+		const double & getTimeVector() const;
 		void sort();
 };
 

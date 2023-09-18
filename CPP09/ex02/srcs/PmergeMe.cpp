@@ -6,15 +6,19 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 19:49:01 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/09/18 15:57:57 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/09/18 16:24:08 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/PmergeMe.hpp"
 
+/* ************************************************************************** */
+/*                               Canonical form                               */
+/* ************************************************************************** */
+
 PmergeMe::PmergeMe(int ac, char **av) : _alone(0)
 {
-	if (ac < 2)
+	if (ac < 3)
 		throw std::runtime_error("Error");
 	int number;
 	for (int i = 1; i < ac; i++)
@@ -30,7 +34,25 @@ PmergeMe::PmergeMe(int ac, char **av) : _alone(0)
 	}
 }
 
+PmergeMe& PmergeMe::operator=(const PmergeMe & src)
+{
+	this->_vector = src._vector;
+	this->_deque = src._deque;
+	this->_timeDeque = src._timeVector;
+	this->_timeVector = src._timeVector;
+	return (*this);
+}
+
+PmergeMe::PmergeMe(const PmergeMe & src)
+{
+	(*this) = src;
+}
+
 PmergeMe::~PmergeMe() {}
+
+/* ************************************************************************** */
+/*                          Private Member functions                          */
+/* ************************************************************************** */
 
 void PmergeMe::_mergeDeque()
 {
@@ -218,12 +240,16 @@ void PmergeMe::_printSequenced(const std::string & str)
 	std::cout << std::endl;
 }
 
-const double & PmergeMe::getTimeDeque()
+/* ************************************************************************** */
+/*                          Public Member functions                           */
+/* ************************************************************************** */
+
+const double & PmergeMe::getTimeDeque() const
 {
 	return (this->_timeDeque);
 }
 
-const double & PmergeMe::getTimeVector()
+const double & PmergeMe::getTimeVector() const
 {
 	return (this->_timeVector);
 }
@@ -243,6 +269,8 @@ void PmergeMe::sort()
 	start_time = std::clock();
 	this->_sortDeque();
 	end_time = std::clock();
+	this->_pairs.clear();
+	this->_alone = 0;
 	this->_timeDeque = static_cast<double>(end_time - start_time) / CLOCKS_PER_SEC * 1000;
 	_printSequence("After :  ");
 }
