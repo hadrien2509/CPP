@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 19:49:01 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/09/18 16:24:08 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/09/18 20:30:33 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ PmergeMe& PmergeMe::operator=(const PmergeMe & src)
 	return (*this);
 }
 
-PmergeMe::PmergeMe(const PmergeMe & src)
+PmergeMe::PmergeMe(const PmergeMe & src) : _alone(0)
 {
 	(*this) = src;
 }
