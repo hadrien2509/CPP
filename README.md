@@ -1,6 +1,6 @@
 # 42 C++ Modules Overview
 
-This README provides an overview of the C++ modules I have studied as part of the 42 curriculum. Each module focuses on different aspects of C++ programming, from basic concepts to more advanced topics.
+This README provides an overview of the C++ modules I have studied and delivered as part of the 42 curriculum. Each module focuses on different aspects of C++ programming, from basic concepts to more advanced topics.
 
 ## Module 00: Basics of C++
 
